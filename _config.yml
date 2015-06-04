@@ -1,4 +1,4 @@
-﻿title:            Oscar
+﻿title:            段家公子
 description:      其实，我是一名文字工作者，同时，我也是一名技术宅！ 
 logo:             site-logo.png
 disqus_shortname: Oscar
@@ -49,7 +49,7 @@ links:
     external: true
 
 # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-timezone:    Asia/Shanghai
+timezone:    Asia/Beijing
 future:      true
 highlighter:  pygments
 markdown:    redcarpet
