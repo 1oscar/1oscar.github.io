@@ -43,20 +43,22 @@ image:
 
 ## 联系方式
 
+联系邮箱：**ccbsfei@gmail.com**
+
+github: [**1oscar**](http://1oscar.github.io/)
+
+知乎：[**段二*](http://www.zhihu.com/people/duan-er-48)
+
+QQ群:  **463021062** 
+
+CSDN: #####[**Oscar 已弃用**](http://blog.csdn.net/duankaifei) 
+
 新浪微博: **已弃用**
 
 豆瓣：**已弃用**
 
-CSDN: [**Oscar 已弃用**](http://blog.csdn.net/duankaifei) 
 
 
-联系邮箱：**ccbsfei@gmail.com**
-
-github:[**1oscar**](http://1oscar.github.io/)
-
-知乎：[**段二*](http://www.zhihu.com/people/duan-er-48)
-
-QQ群: **463021062** 
 
 <script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
