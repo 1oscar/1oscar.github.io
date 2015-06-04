@@ -2,86 +2,71 @@
 layout: page
 title: About me
 tags: [Jekyll, theme, simple, minimal, minimalism, responsive]
-modified: 2014-04-20
+modified: 2015-06-4
 image:
   feature: so-simple-sample-image-4.jpg
-  credit: Joway.W
-  creditlink: http://www.joway-w.com/about
+  credit: 段家公子
+  creditlink: http://1oscar.github.io/about
 ---
 
+##关于我
 
+------
 
-学生，程序猿，写字人
+```
+皖北人士，小硕一枚，游学于南北之间，既有北方人的豪爽，又兼具南方人的细腻。
 
-喜欢摄影，旅行，读书。
+我是一名伪文学青年，偶尔会写写诗，也会进行一些词曲创作，至于小说，暂时还未有一部出炉。
 
-热爱生活，热爱女人。
+我也是一名动漫迷，从高中（2008）到现在，超爱《火影忍者》，我会像鸣人一样坚韧，我会选择雏田一样的女子作为未来的老婆。
 
-总是捣鼓些新奇玩意。
-
-在这里会写些日常随笔，读书笔记，技术摘要。
+我会在这篇博客里记录我的一些技术思考以及我的生活感悟等.
 
 至于博客对我的意义，无非就是座坟，堆砌点活着的证据。
 
 坟上的草，在我年轻时，就看着它一点点长起。
+```
 
-新浪微博:[**JowayW**](http://weibo.com/670425438?from=profile&wvr=5&loc=infdomain)
+----
 
-QQ: **670425438**
+##关于本站
 
-邮箱：**joway@joway.wang**
+---
 
-Facebook:**Joway Wong**
+```
+ 在此之前，我一直在CSDN上写博客，但是总是受限于糟糕的用户体验以及广告的骚扰，于是便有了这个小站的诞生，感谢github pages 
+本站使用jekyll来生成静态文件，Google Analytics 作为流量统计， 评论系统后续会上线 
+折腾开始于2015年5月29日左右，每天利用晚上下班到家的11点至凌晨两点的时间段，终于于6月5日搞定了本站，期间也顺便把git的源码的原理大致浏览了一遍 
+```
 
-github:[**Joway**](http://github.com/joway)
+-----
 
-知乎：[**Joway**](http://www.zhihu.com/people/Joway)
+## 联系方式
 
-豆瓣：[**Joway**](http://www.douban.com/people/54019708/)
+新浪微博: **已弃用**
 
-备用网址：
+豆瓣：**已弃用**
 
-[Joway.wang](http://Joway.Wang)
-
-[Joway-W.com](http://Joway-W.com)
-
-[joway.tk](http://joway.tk)
-
-[joway.github.io](http://joway.github.io)
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+CSDN: [**Oscar 已弃用**](http://blog.csdn.net/duankaifei) 
 
 
-<div align="center">
-      	<p>
-        <strong>微信或支付宝扫描二维码即可赞助作者！</strong><br>
-       <img src="http://ww3.sinaimg.cn/mw690/708485bfgw1epa4h2r85lj20dz0dz0u6.jpg" width="220" height="220" alt=""/> 
-       <img src="http://ww3.sinaimg.cn/mw690/708485bfgw1epa4jy4lydj2074074glw.jpg" width="225" height="225" alt=""/>
-       </p>
-</div>
+联系邮箱：**ccbsfei@gmail.com**
 
+github:[**1oscar**](http://1oscar.github.io/)
+
+知乎：[**段二*](http://www.zhihu.com/people/duan-er-48)
+
+QQ群: **463021062** 
 
 <script>
-var isOnPc=!(/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent));
-if(isOnPc) {
-	window.tctipConfig = {
-		staticPrefix: "http://joway.wang",
-		buttonImageId: 6,
-		list:{
-			alipay: { qrimg: "http://joway.wang/images/alipay.png"},
-			weixin:{qrimg: "http://joway.wang/images/wechat.png"}
-		}
-	};
-}
-</script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+ })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
+ga('create', 'UA-63681520-1', 'auto');
+ga('send', 'pageview');
+
+</script>
 
 <script src="/js/tctip.min.js"></script>
