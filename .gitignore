@@ -1,7 +1,2 @@
 _site
-<<<<<<< HEAD
-*.sublime-project
-*.sublime-workspace
-=======
 .sass-cache
->>>>>>> d227a8c1ed624559d4e4beae8628479befb88fe4
