@@ -43,6 +43,8 @@ image:
 
 ## 联系方式
 
+----
+
 联系邮箱：**ccbsfei@gmail.com**
 
 github:  [**1oscar**](http://1oscar.github.io/)
