@@ -22,9 +22,7 @@ image:
 
 我会在这篇博客里记录我的一些技术思考以及我的生活感悟等.
 
-至于博客对我的意义，无非就是座坟，堆砌点活着的证据。
-
-坟上的草，在我年轻时，就看着它一点点长起。
+至于博客对我的意义： 我宁愿作一叶扁舟，躺在河的怀里，对着天空数星星！
 ```
 
 ----
@@ -35,7 +33,7 @@ image:
 
 ```
  在此之前，我一直在CSDN上写博客，但是总是受限于糟糕的用户体验以及广告的骚扰，于是便有了这个小站的诞生，感谢github pages 
-本站使用jekyll来生成静态文件，Google Analytics 作为流量统计，多说作为评论系统 
+本站使用jekyll来生成静态文件，Google Analytics 作为流量统计，多说作为评论系统, baidu share 作为流量分享
 折腾开始于2015年5月29日左右，每天利用晚上下班到家的11点至凌晨两点的时间段，终于于6月5日搞定了本站，期间也顺便把git的源码的原理大致浏览了一遍 
 ```
 
@@ -47,17 +45,19 @@ image:
 
 联系邮箱：**ccbsfei@gmail.com**
 
-github:  [**1oscar**](http://1oscar.github.io/)
+github:  [**段家公子**](http://1oscar.github.io/)
 
-知乎：[**段二**](http://www.zhihu.com/people/duan-er-48)
+知乎：[**段家公子**](http://www.zhihu.com/people/duan-er-48)
 
 QQ群:  **463021062** 
 
-CSDN: [**Oscar 已弃用**](http://blog.csdn.net/duankaifei) 
+CSDN: [**段家公子 已弃用**](http://blog.csdn.net/duankaifei) 
 
 新浪微博: **已弃用**
 
 豆瓣：**已弃用**
+
+简书: **已弃用**
 
 
 
