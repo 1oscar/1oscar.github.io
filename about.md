@@ -45,13 +45,13 @@ image:
 
 联系邮箱：**ccbsfei@gmail.com**
 
-github: **[**1oscar**](http://1oscar.github.io/)**
+github:  [**1oscar**](http://1oscar.github.io/)
 
-知乎：**[**段二**](http://www.zhihu.com/people/duan-er-48)**
+知乎：[**段二**](http://www.zhihu.com/people/duan-er-48)
 
 QQ群:  **463021062** 
 
-CSDN: **[**Oscar 已弃用**](http://blog.csdn.net/duankaifei)** 
+CSDN: [**Oscar 已弃用**](http://blog.csdn.net/duankaifei) 
 
 新浪微博: **已弃用**
 
