@@ -47,19 +47,21 @@ image:
 
 联系邮箱：**ccbsfei@gmail.com**
 
-github:  [**段家公子**](http://1oscar.github.io/)
+github:  [**段家公子**](https://github.com/1oscar)
 
-知乎：[**段家公子**](http://www.zhihu.com/people/duan-er-48)
+知乎：[**段家公子**](http://www.zhihu.com/people/1oscar)
 
 QQ群:  **463021062** 
 
+新浪微博: [**段家公子**](http://weibo.com/2232312841/profile?topnav=1&wvr=6)
+
 CSDN: [**段家公子 已弃用**](http://blog.csdn.net/duankaifei) 
 
-新浪微博: **已弃用**
+豆瓣：**段家公子 已弃用**
 
-豆瓣：**已弃用**
+简书: **段家公子 已弃用**
 
-简书: **已弃用**
+虎嗅：**段家公子 已弃用**
 
 
 
