@@ -39,6 +39,18 @@
             <a href="https://twitter.com/intent/tweet?hashtags={{ page.categories | join: ',' }}&text={{ page.title }}&url={{ site.url }}{{ page.url }}&via={{site.owner.twitter}}" title="Share on Twitter" itemprop="Twitter"><i class="fa fa-twitter-square"></i> Tweet</a></span>
         <span class="social-share-googleplus">
             <a href="https://plus.google.com/share?url={{ site.url }}{{ page.url }}" title="Share on Google Plus" itemprop="GooglePlus"><i class="fa fa-google-plus-square"></i> +1</a></span>
+        <!-- 使用 http://ibruce.info/2015/04/04/busuanzi/ 统计访问次数-->
+        <span class="social-share-access_times">
+            <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+                 </script>
+                 <i class="fa fa-user">
+                    本文总阅读量<span id="busuanzi_value_page_pv">
+                        <i class="fa fa-spinner fa-spin"></i>
+                    </span>次
+        </span>
+
+        <!-- 使用 http://ibruce.info/2015/04/04/busuanzi/ 统计访问次数-->
+
             <!-- /.social-share -->{% endif %}
       </footer>
       <div id= "post-entry-content"class="entry-content">
@@ -102,8 +114,9 @@ var duoshuoQuery = {short_name:"1oscar"};
 
 {% include scripts.html %}
 
-
+<!-- 打赏js -->
 <script src="/js/tctip.min.js"></script>
+<!-- 打赏js -->
 
 
 
