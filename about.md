@@ -45,25 +45,25 @@ image:
 
 ----
 
-- #### 联系邮箱 :  **ccbsfei@gmail.com**
+- ##### 联系邮箱 :  **ccbsfei@gmail.com**
 
-- #### github :  [**段家公子**](https://github.com/1oscar)
+- ##### github :  [**段家公子**](https://github.com/1oscar)
 
-- #### V2 : [**段家公子**](http://www.v2ex.com/member/1oscar)
+- ##### V2 : [**段家公子**](http://www.v2ex.com/member/1oscar)
 
-- #### 知乎 : [**段家公子**](http://www.zhihu.com/people/1oscar)
+- ##### 知乎 : [**段家公子**](http://www.zhihu.com/people/1oscar)
 
-- #### QQ群 :   **463021062** 
+- ##### QQ群 :   **463021062** 
 
-- #### 新浪微博 : [**段家公子**](http://weibo.com/2232312841/profile?topnav=1&wvr=6)
+- ##### 新浪微博 : [**段家公子**](http://weibo.com/2232312841/profile?topnav=1&wvr=6)
 
-- #### CSDN :  [**段家公子 已弃用**](http://blog.csdn.net/duankaifei) 
+- ##### CSDN :  [**段家公子 已弃用**](http://blog.csdn.net/duankaifei) 
 
-- #### 豆瓣 :  **段家公子 已弃用**
+- ##### 豆瓣 :  **段家公子 已弃用**
 
-- #### 简书 :  **段家公子 已弃用**
+- ##### 简书 :  **段家公子 已弃用**
 
-- #### 虎嗅 :  **段家公子 已弃用**
+- ##### 虎嗅 :  **段家公子 已弃用**
 
 
 
