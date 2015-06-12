@@ -57,7 +57,7 @@ image:
 
 - #### 新浪微博 : [**段家公子**](http://weibo.com/2232312841/profile?topnav=1&wvr=6)
 
-- #### CSDN :  [**段家公子 已弃用**](http://blog.csdn.net/duankaifei) 
+- #### CSDN :  [**段家公子 (已弃用)**](http://blog.csdn.net/duankaifei) 
 
 - ##### 豆瓣 :  **段家公子 已弃用**
 
