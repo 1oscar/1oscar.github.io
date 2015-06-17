@@ -1,0 +1,36 @@
+---
+layout: post
+title: "深入理解python编解码"
+comments: true
+share: true
+tags: python
+---
+
+---
+### unicode
+1. Unicode 可以表示不同的语言，同時，不同的编码也都可以和 Unicode进行转换。
+2. str1.decode('utf8'): 表示把utf8编码的str1转换为unicode
+3. str2.encode('utf8'): 表示把unicode编码的str2转换为utf8
+**备注: 可以把unicode理解成一种中间编码形式**
+
+---
+### python
+&emsp;&emsp;
+1. `# -*- coding: utf-8 -*-`或者`#coding=utf8`：指定�文件编码方式（其实是在告诉解释器“我的编码格式是`utf8`）,如果没有此声明,`python`默认以`ASCII`编码去处理,啊、但是没法处理非ascii编码的
+2. 有时候即使声明了1. , 对于外面引入或者抓取的文件仍然乱码的时候，即`page = f.read()`，`page`是`str`类型，但是`page`里的某些符号等可能是unicode，此时， 需要先对此文件解码处理，文件.decode('utf8')
+3. 更改系统的默认编码：
+        
+        import sys
+        reload(sys)
+        sys.setdefaultencoding('utf8')
+
+---
+### 其他
+&emsp;&emsp; 打印系统编码： 
+
+        env |grep -i lang
+
+
+
+ 
+ 
