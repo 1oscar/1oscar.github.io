@@ -33,9 +33,9 @@ tags: python
 ---
 ### 其他
 &emsp;&emsp; 打印系统编码： 
-
+```python
         env |grep -i lang
-
+```
 
 
  
