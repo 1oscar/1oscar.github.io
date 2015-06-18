@@ -57,7 +57,7 @@ image:
 
 - #### 知乎 : [**段家公子**](http://www.zhihu.com/people/1oscar)
 
-- #### QQ群 :   **463021062** 
+- #### QQ群 :   **383317027** 
 
 - #### 新浪微博 : [**段家公子**](http://weibo.com/2232312841/profile?topnav=1&wvr=6)
 
