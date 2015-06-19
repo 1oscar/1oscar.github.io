@@ -8,7 +8,7 @@ tags: shell
 
 **第一行:**
 
-```powershell
+```
 
     #!/bin/bash
     
@@ -16,7 +16,7 @@ tags: shell
 
 **使脚本具有执行权限 :**
 
-```powershell
+```
 
     chmod +x ./test.sh
     
@@ -24,7 +24,7 @@ tags: shell
 
 **执行脚本**
 
-```powershell
+```
 
     ./test.sh
     
@@ -32,7 +32,7 @@ tags: shell
 
 **定义变量：**
 
-```powershell
+```
 
     variableName="value"
 
