@@ -42,7 +42,7 @@ tags: shell
 
 **定义其他变量**
 
-```powershell
+```
 
     只读变量：readonly variableName
     删除变量：unset variableName
@@ -51,7 +51,7 @@ tags: shell
 
 **使用变量**：
 
-```powershell
+```
 
     echo ${your_name}
     
@@ -59,7 +59,7 @@ tags: shell
 
 **循环：**
 
-``` javascript?linenums
+``` 
 
     for skill in Ada Coffe Action Java 
     do
@@ -81,13 +81,13 @@ tags: shell
 **命令替换**
 *命令替换是指Shell先执行命令，将输出结果暂时保存，在适当的地方输出*
 
-```powershell
+```
 
     `command`
     
 ```
 
-```powershell
+```
 
 #!/bin/bash
 
@@ -100,7 +100,7 @@ echo "Logged in user are $USERS"
 ```
 **运算**
 
-```powershell
+```
 
 #!/bin/bash
 
@@ -112,7 +112,7 @@ Total value : 4
 ```
 *2+2 是不对的，必须写成 2 + 2完整的表达式要被 ` ` 包含，注意这个字符不是常用的单引号，在 Esc 键下边。*
 
-```powershell
+```
 
 乘号(*)前边必须加反斜杠(\)才能实现乘法运算；
 
@@ -121,7 +121,7 @@ Total value : 4
 **条件表达式要放在方括号之间，并且要有空格，例如 [$a==$b] 是错误的，必须写成 [ $a == $b ]。**
 **注释**
 
-```powershell
+```
 
     #****
     或者
@@ -131,7 +131,7 @@ Total value : 4
 
 **获取字符串长度**
 
-```powershell
+```
 
 string="abcd"
 echo ${#string} #输出 4
@@ -151,7 +151,7 @@ echo ${string:1:4} #输出liba
 
 *bash支持一维数组（不支持多维数组）用括号来表示数组，数组元素用“空格”符号分割开*
 
-```powershell
+```
 
 array_name=(value0 value1 value2 value3)
 ${array_name[index]}   #读取数组元素值
@@ -163,7 +163,7 @@ lengthn=${#array_name[n]} #取得数组单个元素的长度
 ```
 **if else 语句**
 
-```powershell
+```
 
 if [ expression ]
 then
@@ -172,7 +172,7 @@ fi
 
 ```
 
-```powershell
+```
 
 if [ expression ]
 then
@@ -185,7 +185,7 @@ fi
 
 **while 循环**
 
-```powershell
+```
 
 COUNTER=0
 while [ $COUNTER -lt 5 ]
@@ -198,7 +198,7 @@ done
 
 **函数**
 
-```powershell
+```
 
 #!/bin/bash
 
@@ -215,7 +215,7 @@ Hello
 *在Shell中，调用函数时可以向其传递参数。在函数体内部，通过 $n 的形式来获取参数的值，例如，$1表示第一个参数，$2表示第二个参数...*
 **重定向**
 
-```powershell
+```
 
 >  #输出重定向会覆盖文件内容
 >> # >> 追加到文件末尾
@@ -224,7 +224,7 @@ Hello
 
 **Shell 中包含脚本可以使用**
 
-```powershell
+```
 
 . filename
 或者
