@@ -121,7 +121,7 @@ Total value : 4
 **条件表达式要放在方括号之间，并且要有空格，例如 [$a==$b] 是错误的，必须写成 [ $a == $b ]。**
 **注释**
 
-```
+``` javascript?linenums
 
     #****
     或者
@@ -131,7 +131,7 @@ Total value : 4
 
 **获取字符串长度**
 
-```
+```javascript?linenums
 
 string="abcd"
 echo ${#string} #输出 4
