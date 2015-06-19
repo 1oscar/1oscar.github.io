@@ -8,15 +8,15 @@ tags: shell
 
 **第一行:**
 
-```
+``` javascript?linenums
 
     #!/bin/bash
     
-```
+```javascript?linenums
 
 **使脚本具有执行权限 :**
 
-```
+```javascript?linenums
 
     chmod +x ./test.sh
     
