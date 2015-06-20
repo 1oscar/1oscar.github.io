@@ -70,7 +70,7 @@ tags: shell
 
 **特殊变量**：
 
-![](https://github.com/1oscar/1oscar.github.io/blob/master/_posts/images/shell.png)
+![](./images/shell.png)
 
 **转义字符**
 
