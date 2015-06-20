@@ -8,15 +8,15 @@ tags: shell
 
 **第一行:**
 
-``` javascript?linenums
+```shell 
 
     #!/bin/bash
     
-```javascript?linenums
+```shell
 
 **使脚本具有执行权限 :**
 
-```javascript?linenums
+```shell
 
     chmod +x ./test.sh
     
@@ -103,7 +103,6 @@ echo "Logged in user are $USERS"
 ```powershell
 
 #!/bin/bash
-
 val=`expr 2 + 2`
 echo "Total value : $val"
 
@@ -121,7 +120,7 @@ Total value : 4
 **条件表达式要放在方括号之间，并且要有空格，例如 [$a==$b] 是错误的，必须写成 [ $a == $b ]。**
 **注释**
 
-``` javascript?linenums
+```shell
 
     #****
     或者
@@ -131,7 +130,7 @@ Total value : 4
 
 **获取字符串长度**
 
-```javascript?linenums
+```shell
 
 string="abcd"
 echo ${#string} #输出 4
@@ -215,7 +214,7 @@ Hello
 *在Shell中，调用函数时可以向其传递参数。在函数体内部，通过 $n 的形式来获取参数的值，例如，$1表示第一个参数，$2表示第二个参数...*
 **重定向**
 
-``` powershell
+```powershell
 
 >  #输出重定向会覆盖文件内容
 >> # >> 追加到文件末尾
