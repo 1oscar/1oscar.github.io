@@ -104,6 +104,8 @@ tags: shell
 
 **if else 语句**
 
+```powershell
+
     if [ expression ]
     then
        Statement(s) to be executed if expression is true
@@ -117,8 +119,11 @@ tags: shell
        Statement(s) to be executed if expression is not true
     fi
 
+```
 
 **while 循环**
+
+```powershell
 
     COUNTER=0
     while [ $COUNTER -lt 5 ]
@@ -127,7 +132,11 @@ tags: shell
         echo $COUNTER
     done
 
+```
+
 **函数**
+
+```powershell
 
     #!/bin/bash
     # Define your function here
@@ -136,6 +145,8 @@ tags: shell
     }
     # Invoke your function
     Hello
+
+```
 
 *在Shell中，调用函数时可以向其传递参数。在函数体内部，通过 $n 的形式来获取参数的值，例如，$1表示第一个参数，$2表示第二个参数...*
 **重定向**
