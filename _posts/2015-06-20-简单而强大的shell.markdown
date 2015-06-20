@@ -35,10 +35,14 @@ tags: shell
 
 **循环：**
 
+```powershell
+
     for skill in Ada Coffe Action Java 
     do
     echo " ${skill}"
     done
+
+```
 
 **特殊变量**：
 
@@ -56,6 +60,7 @@ tags: shell
 
     `command`
 
+```powershell
 
     #!/bin/bash
     DATE=`date`
@@ -63,12 +68,18 @@ tags: shell
     USERS=`who | wc -l`
     echo "Logged in user are $USERS"
 
+```
+
 **运算**
+
+```powershell
 
     #!/bin/bash
     val=`expr 2 + 2`
     echo "Total value : $val"
     Total value : 4
+
+```
 
 *2+2 是不对的，必须写成 2 + 2完整的表达式要被 ` ` 包含，注意这个字符不是常用的单引号，在 Esc 键下边。*
 
@@ -95,12 +106,16 @@ tags: shell
 
 *bash支持一维数组（不支持多维数组）用括号来表示数组，数组元素用“空格”符号分割开*
 
+```powershell
+
     array_name=(value0 value1 value2 value3)
     ${array_name[index]}   #读取数组元素值
     ${array_name[*]}    #获取数组中的所有元素
     ${array_name[@]}    # 获取数组中的所有元素
     length=${#array_name[@]} #取得数组元素的个数
     lengthn=${#array_name[n]} #取得数组单个元素的长度
+
+```
 
 **if else 语句**
 
