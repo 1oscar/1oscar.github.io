@@ -8,15 +8,15 @@ tags: shell
 
 **第一行:**
 
-```shell 
+```powershell
 
     #!/bin/bash
     
-```shell
+```powershell
 
 **使脚本具有执行权限 :**
 
-```shell
+```powershell
 
     chmod +x ./test.sh
     
@@ -70,7 +70,7 @@ tags: shell
 
 **特殊变量**：
 
-![特殊变量列表][1]
+![特殊变量列表](https://github.com/1oscar/1oscar.github.io/blob/master/_posts/images/shell.png)
 
 **转义字符**
 
@@ -230,5 +230,4 @@ Hello
 source filename
 
 ```
-
-  [1]: https://github.com/1oscar/1oscar.github.io/blob/master/_posts/images/shell.png "屏幕快照 2015-06-19 上午11.45.33.png"
+  
