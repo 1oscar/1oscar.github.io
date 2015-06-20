@@ -8,7 +8,7 @@ tags: shell
 
 **第一行:**
 
-```powershell
+```
 
     #!/bin/bash
     
@@ -16,7 +16,7 @@ tags: shell
 
 **使脚本具有执行权限 :**
 
-```powershell
+```
 
     chmod +x ./test.sh
     
@@ -24,7 +24,7 @@ tags: shell
 
 **执行脚本**
 
-```powershell
+```
 
     ./test.sh
     
@@ -32,7 +32,7 @@ tags: shell
 
 **定义变量：**
 
-```powershell
+```
 
     variableName="value"
 
@@ -42,7 +42,7 @@ tags: shell
 
 **定义其他变量**
 
-```powershell
+```
 
     只读变量：readonly variableName
     删除变量：unset variableName
@@ -51,7 +51,7 @@ tags: shell
 
 **使用变量**：
 
-```powershell
+```
 
     echo ${your_name}
     
@@ -59,7 +59,7 @@ tags: shell
 
 **循环：**
 
-```powershell 
+```
 
     for skill in Ada Coffe Action Java 
     do
@@ -80,7 +80,7 @@ tags: shell
 **命令替换**
 *命令替换是指Shell先执行命令，将输出结果暂时保存，在适当的地方输出*
 
-```powershell
+```
 
     `command`
     
@@ -88,24 +88,24 @@ tags: shell
 
 ```powershell
 
-#!/bin/bash
+    #!/bin/bash
 
-DATE=`date`
-echo "Date is $DATE"
+    DATE=`date`
+    echo "Date is $DATE"
 
-USERS=`who | wc -l`
-echo "Logged in user are $USERS"
+    USERS=`who | wc -l`
+    echo "Logged in user are $USERS"
 
 ```
 **运算**
 
 ```powershell
 
-#!/bin/bash
-val=`expr 2 + 2`
-echo "Total value : $val"
+    #!/bin/bash
+    val=`expr 2 + 2`
+    echo "Total value : $val"
 
-Total value : 4
+    Total value : 4
 
 ```
 *2+2 是不对的，必须写成 2 + 2完整的表达式要被 ` ` 包含，注意这个字符不是常用的单引号，在 Esc 键下边。*
@@ -198,15 +198,15 @@ done
 
 ```powershell
 
-#!/bin/bash
+    #!/bin/bash
 
-# Define your function here
-Hello () {
-   echo "world"
-}
+    # Define your function here
+    Hello () {
+        echo "world"
+    }
 
-# Invoke your function
-Hello
+    # Invoke your function
+    Hello
 
 ```
 
