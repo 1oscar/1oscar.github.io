@@ -70,7 +70,8 @@ tags: shell
 
 **特殊变量**：
 
-![特殊变量列表](https://github.com/1oscar/1oscar.github.io/blob/master/_posts/images/shell.png)
+![](http://ww3.sinaimg.cn/large/708485bfjw1eqce9136h4j218g0u7k0c.jpg)
+![](https://github.com/1oscar/1oscar.github.io/blob/master/_posts/images/shell.png)
 
 **转义字符**
 
