@@ -112,7 +112,7 @@ tags: shell
 
 ```powershell
 
-乘号(*)前边必须加反斜杠(\)才能实现乘法运算；
+    乘号(*)前边必须加反斜杠(\)才能实现乘法运算；
 
 ```
 
@@ -129,10 +129,10 @@ tags: shell
 
 **获取字符串长度**
 
-```shell
+```
 
-string="abcd"
-echo ${#string} #输出 4
+    string="abcd"
+    echo ${#string} #输出 4
 
 ```
 
@@ -140,8 +140,8 @@ echo ${#string} #输出 4
 
 ```powershell
 
-string="alibaba is a great company"
-echo ${string:1:4} #输出liba
+    string="alibaba is a great company"
+    echo ${string:1:4} #输出liba
 
 ```
 
@@ -151,33 +151,33 @@ echo ${string:1:4} #输出liba
 
 ```powershell
 
-array_name=(value0 value1 value2 value3)
-${array_name[index]}   #读取数组元素值
-${array_name[*]}    #获取数组中的所有元素
-${array_name[@]}    # 获取数组中的所有元素
-length=${#array_name[@]} #取得数组元素的个数
-lengthn=${#array_name[n]} #取得数组单个元素的长度
+    array_name=(value0 value1 value2 value3)
+    ${array_name[index]}   #读取数组元素值
+    ${array_name[*]}    #获取数组中的所有元素
+    ${array_name[@]}    # 获取数组中的所有元素
+    length=${#array_name[@]} #取得数组元素的个数
+    lengthn=${#array_name[n]} #取得数组单个元素的长度
 
 ```
 **if else 语句**
 
 ```powershell
 
-if [ expression ]
-then
-   Statement(s) to be executed if expression is true
-fi
+    if [ expression ]
+    then
+        Statement(s) to be executed if expression is true
+    fi
 
 ```
 
 ```powershell
 
-if [ expression ]
-then
-   Statement(s) to be executed if expression is true
-else
-   Statement(s) to be executed if expression is not true
-fi
+    if [ expression ]
+    then
+       Statement(s) to be executed if expression is true
+    else
+       Statement(s) to be executed if expression is not true
+    fi
 
 ```
 
@@ -185,12 +185,12 @@ fi
 
 ```powershell
 
-COUNTER=0
-while [ $COUNTER -lt 5 ]
-do
-    COUNTER='expr $COUNTER+1'
-    echo $COUNTER
-done
+    COUNTER=0
+    while [ $COUNTER -lt 5 ]
+    do
+        COUNTER='expr $COUNTER+1'
+        echo $COUNTER
+    done
 
 ```
 
@@ -210,13 +210,13 @@ done
 
 ```
 
-*在Shell中，调用函数时可以向其传递参数。在函数体内部，通过 $n 的形式来获取参数的值，例如，$1表示第一个参数，$2表示第二个参数...*
+    *在Shell中，调用函数时可以向其传递参数。在函数体内部，通过 $n 的形式来获取参数的值，例如，$1表示第一个参数，$2表示第二个参数...*
 **重定向**
 
 ```powershell
 
->  #输出重定向会覆盖文件内容
->> # >> 追加到文件末尾
+    >  #输出重定向会覆盖文件内容
+    >> # >> 追加到文件末尾
 
 ```
 
@@ -224,9 +224,9 @@ done
 
 ```powershell 
 
-. filename
-或者
-source filename
+    . filename
+    或者
+    source filename
 
 ```
   
