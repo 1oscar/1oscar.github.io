@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "简单而强大的shell" 
+title: "简单而强大的shell"
 comments: true
 share: true
 tags: shell
@@ -8,148 +8,92 @@ tags: shell
 
 **第一行:**
 
-```
-
     #!/bin/bash
-    
-```
 
 **使脚本具有执行权限 :**
 
-```
-
-    chmod +x ./test.sh
+     chmod +x ./test.sh
     
-```
-
-**执行脚本**
-
-```
+**执行脚本: **  
 
     ./test.sh
-    
-```
 
 **定义变量：**
 
-```
-
     variableName="value"
-
-```
 
 “＝”号左右无空格，变量首个字符必须为字母（a-z，A-Z）
 
 **定义其他变量**
 
-```
-
     只读变量：readonly variableName
     删除变量：unset variableName
-    
-```
 
 **使用变量**：
 
-```
-
     echo ${your_name}
-    
-```
 
 **循环：**
-
-```
 
     for skill in Ada Coffe Action Java 
     do
     echo " ${skill}"
     done
-    
-```
 
 **特殊变量**：
 
+![特殊变量列表][https://github.com/1oscar/1oscar.github.io/blob/master/_posts/images/shell.png]
 
 **转义字符**
 
 `echo -e "\n"`
 `echo -E " \n"` 禁止转义，默认不转义
+
 -e 表示对转义字符进行替换， 不使用 -e 选项，将会原样输出
 
 **命令替换**
 *命令替换是指Shell先执行命令，将输出结果暂时保存，在适当的地方输出*
 
-```
-
     `command`
-    
-```
 
-```powershell
 
     #!/bin/bash
-
     DATE=`date`
     echo "Date is $DATE"
-
     USERS=`who | wc -l`
     echo "Logged in user are $USERS"
 
-```
 **运算**
-
-```powershell
 
     #!/bin/bash
     val=`expr 2 + 2`
     echo "Total value : $val"
-
     Total value : 4
 
-```
 *2+2 是不对的，必须写成 2 + 2完整的表达式要被 ` ` 包含，注意这个字符不是常用的单引号，在 Esc 键下边。*
 
-```powershell
-
     乘号(*)前边必须加反斜杠(\)才能实现乘法运算；
-
-```
 
 **条件表达式要放在方括号之间，并且要有空格，例如 [$a==$b] 是错误的，必须写成 [ $a == $b ]。**
 **注释**
 
-```shell
-
     #****
     或者
     把这一段要注释的代码用一对花括号括起来，定义成一个函数，没有地方调用这个函数，这块代码就不会执行，达到了和注释一样的效果。
-    
-```
 
 **获取字符串长度**
-
-```
 
     string="abcd"
     echo ${#string} #输出 4
 
-```
-
 **提取子字符串**
-
-```powershell
 
     string="alibaba is a great company"
     echo ${string:1:4} #输出liba
 
-```
-
 **数组**
 
 *bash支持一维数组（不支持多维数组）用括号来表示数组，数组元素用“空格”符号分割开*
-
-```powershell
 
     array_name=(value0 value1 value2 value3)
     ${array_name[index]}   #读取数组元素值
@@ -158,19 +102,13 @@ tags: shell
     length=${#array_name[@]} #取得数组元素的个数
     lengthn=${#array_name[n]} #取得数组单个元素的长度
 
-```
 **if else 语句**
-
-```powershell
 
     if [ expression ]
     then
-        Statement(s) to be executed if expression is true
+       Statement(s) to be executed if expression is true
     fi
 
-```
-
-```powershell
 
     if [ expression ]
     then
@@ -179,11 +117,8 @@ tags: shell
        Statement(s) to be executed if expression is not true
     fi
 
-```
 
 **while 循环**
-
-```powershell
 
     COUNTER=0
     while [ $COUNTER -lt 5 ]
@@ -192,25 +127,17 @@ tags: shell
         echo $COUNTER
     done
 
-```
-
 **函数**
 
-```powershell
-
     #!/bin/bash
-
     # Define your function here
     Hello () {
-        echo "world"
+       echo "world"
     }
-
     # Invoke your function
     Hello
 
-```
-
-    *在Shell中，调用函数时可以向其传递参数。在函数体内部，通过 $n 的形式来获取参数的值，例如，$1表示第一个参数，$2表示第二个参数...*
+*在Shell中，调用函数时可以向其传递参数。在函数体内部，通过 $n 的形式来获取参数的值，例如，$1表示第一个参数，$2表示第二个参数...*
 **重定向**
 
 ```powershell
@@ -222,11 +149,10 @@ tags: shell
 
 **Shell 中包含脚本可以使用**
 
-```powershell 
+```powershell
 
     . filename
     或者
     source filename
 
 ```
-  
