@@ -12,7 +12,7 @@ tags: shell
 
     #!/bin/bash
     
-```powershell
+```
 
 **使脚本具有执行权限 :**
 
