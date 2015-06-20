@@ -42,7 +42,7 @@ tags: shell
 
 **特殊变量**：
 
-![特殊变量列表][https://github.com/1oscar/1oscar.github.io/blob/master/_posts/images/shell.png]
+![特殊变量列表](https://github.com/1oscar/1oscar.github.io/blob/master/_posts/images/shell.png)
 
 **转义字符**
 
