@@ -221,21 +221,21 @@ urlretrieve多数适用单纯的只下载的功能或者显示下载的进度等
  ```
 3. 其他功能特性
 
-```
-国际化域名和 URLs
-Keep-Alive & 连接池
-持久的 Cookie 会话
-类浏览器式的 SSL 加密认证
-基本/摘要式的身份认证
-优雅的键/值 Cookies
-自动解压
-Unicode 编码的响应体
-多段文件上传
-连接超时
-支持 .netrc
-适用于 Python 2.6—3.4
-线程安全
-```
+    ```
+    国际化域名和 URLs
+    Keep-Alive & 连接池
+    持久的 Cookie 会话
+    类浏览器式的 SSL 加密认证
+    基本/摘要式的身份认证
+    优雅的键/值 Cookies
+    自动解压
+    Unicode 编码的响应体
+    多段文件上传
+    连接超时
+    支持 .netrc
+    适用于 Python 2.6—3.4
+    线程安全
+    ```
 4. requests不是python自带的库，需要另外安装 easy_install or pip install 
 5. requests缺陷:直接使用不能异步调用，速度慢`（from others）`。官方的urllib可以替代它。
 6. 个人不建议使用requests模块
