@@ -23,12 +23,12 @@ tags: python
 ### urllib 模块
 1. urlencode不能直接处理unicode对象，所以如果是unicode，需要先编码，有unicode转到utf8，举例：
 
-```python
+ ```python
      urllib.urlencode (u'bl'.encode('utf-8'))
-```
+ ```
 2. 示例
 
-```python
+ ```python
      import urllib       #sohu 手机主页
      url = 'http://m.sohu.com/?v=3&_once_=000025_v2tov3&_smuid=ICvXXapq5EfTpQTVq6Tpz'
      resp = urllib.urlopen(url)
@@ -37,14 +37,15 @@ tags: python
      f = open('./urllib_index.html', 'w')
      f.write(page)
      print dir(resp)
-     ```
+ ```
      ['__doc__', '__init__', '__iter__', '__module__', '__repr__', 'close', 'code', 'fileno', 'fp', 'getcode', 'geturl', 'headers', 'info', 'next', 'read', 'readline', 'readlines', 'url']
-     ```
+ ```python
      print resp.getcode(), resp.geturl(), resp.info(), resp.headers, resp.url
      #resp.url和resp.geturl()结果一样
  ```
 3. 编解码示例
 urllib.quote和urllib.urlencode都是编码，但用法不一样
+ 
  ```python
  48     s = urllib.quote('This is python')  #编码
  49     print 'quote:\t'+s    ＃空格用%20替代
@@ -67,17 +68,18 @@ urllib.quote和urllib.urlencode都是编码，但用法不一样
  ```
 4. urlretrieve()
 urlretrieve多数适用单纯的只下载的功能或者显示下载的进度等
+ 
  ```python
   75     url = 'http://m.sohu.com/?v=3&_once_=000025_v2tov3&_smuid=ICvXXapq5EfTpQTVq6Tpz'
  76     urllib.urlretrieve(url, './retrieve_index.html')
  #直接把url链接网页内容下载到retrieve_index.html里了，适用于单纯的下载的功能。urllib.urlretrieve(url, local_name, method)
- 
  ```
 ### urllib2
 1. urllib2模块定义的函数和类用来获取URL（主要是HTTP的），他提供一些复杂的接口用于处理： 基本认证，重定向，Cookies等。
 2. 常用方法和类
 - 2.1 urllib2.urlopen(url[, data][, timeout])  #传url时候，用法同urllib里的urlopen
    - 它打开URL网址，url参数可以是一个字符串url或者是一个Request对象。可选的参数timeout，阻塞操作以秒为单位，如尝试连接（如果没有指定，将使用设置的全局默认timeout值）。实际上这仅适用于HTTP，HTTPS和FTP连接。
+   
    ```python
     85     url = 'http://m.sohu.com/?v=3&_once_=000025_v2tov3&_smuid=ICvXXapq5EfTpQTVq6Tpz'
     86     resp = urllib2.urlopen(url)
@@ -85,6 +87,7 @@ urlretrieve多数适用单纯的只下载的功能或者显示下载的进度等
 
    ```
    - urlopen方法也可通过建立了一个Request对象来明确指明想要获取的url。调用urlopen函数对请求的url返回一个response对象。这个response类似于一个file对象，所以用.read()函数可以操作这个response对象
+   
    ```python
    url = 'http://m.sohu.com/?v=3&_once_=000025_v2tov3&_smuid=ICvXXapq5EfTpQTVq6Tpz'
    req = urllib2.Request(url)
@@ -96,6 +99,7 @@ urlretrieve多数适用单纯的只下载的功能或者显示下载的进度等
   - Request类是一个抽象的URL请求。5个参数的说明如下:
     - URL——是一个字符串，其中包含一个有效的URL。
     - data——是一个字符串，指定额外的数据发送到服务器，如果没有data需要发送可以为“None”。目前使用data的HTTP请求是唯一的。当请求含有data参数时，HTTP的请求为POST，而不是GET。数据应该是缓存在一个标准的application/x-www-form-urlencoded格式中。urllib.urlencode()函数用映射或2元组，返回一个这种格式的字符串。通俗的说就是如果想向一个URL发送数据（通常这些数据是代表一些CGI脚本或者其他的web应用）。例如在网上填的form（表单）时，浏览器会POST表单的内容，这些数据需要被以标准的格式编码（encode），然后作为一个数据参数传送给Request对象。Encoding是在urlib模块中完成的，而不是在urlib2中完成的。下面是个例子：
+     
      ```python
       import urllib
       import urllib2
@@ -110,6 +114,7 @@ urlretrieve多数适用单纯的只下载的功能或者显示下载的进度等
      
      ```
     - headers——是字典类型，头字典可以作为参数在request时直接传入，也可以把每个键和值作为参数调用add_header()方法来添加。作为辨别浏览器身份的User-Agent header是经常被用来恶搞和伪装的，因为一些HTTP服务只允许某些请求来自常见的浏览器而不是脚本，或是针对不同的浏览器返回不同的版本。例如，Mozilla Firefox浏览器被识别为“Mozilla/5.0 (X11; U; Linux i686) Gecko/20071127 Firefox/2.0.0.11”。默认情况下，urlib2把自己识别为Python-urllib/x.y（这里的xy是python发行版的主要或次要的版本号，如在Python 2.6中，urllib2的默认用户代理字符串是“Python-urllib/2.6。下面的例子和上面的区别就是在请求时加了一个headers，模仿IE浏览器提交请求。
+     
      ```python
       import urllib
       import urllib2
@@ -126,6 +131,7 @@ urlretrieve多数适用单纯的只下载的功能或者显示下载的进度等
      ```
     标准的headers组成是(Content-Length, Content-Type and Host)，只有在Request对象调用urlopen()（上面的例子也属于这个情况）或者OpenerDirector.open()时加入。两种情况的例子如下：
     使用headers参数构造Request对象，如上例在生成Request对象时已经初始化header，而下例是Request对象调用add_header(key, val)方法附加header（Request对象的方法下面再介绍）：
+     
      ```python
       import urllib2
       req = urllib2.Request('http://www.example.com/')
@@ -134,29 +140,30 @@ urlretrieve多数适用单纯的只下载的功能或者显示下载的进度等
      
      ```
     OpenerDirector为每一个Request自动加上一个User-Agent header，所以第二种方法如下（urllib2.build_opener会返回一个OpenerDirector对象，关于urllib2.build_opener类下面再说）：
+     
      ```python
       import urllib2
       opener = urllib2.build_opener()
       opener.addheaders = [('User-agent', 'Mozilla/5.0')]
       opener.open('http://www.example.com/')
-     
      ```
 - 2.3 urllib2.install_opener(opener)和urllib2.build_opener([handler, ...])　
   install_opener和build_opener这两个方法通常都是在一起用,也有时候build_opener单独使用来得到OpenerDirector对象。
   install_opener实例化会得到OpenerDirector 对象用来赋予全局变量opener。如果想用这个opener来调用urlopen，那么就必须实例化得到OpenerDirector；这样就可以简单的调用OpenerDirector.open()来代替urlopen()。
   build_opener实例化也会得到OpenerDirector对象，其中参数handlers可以被BaseHandler或他的子类实例化。子类中可以通过以下实例化：**ProxyHandler** **(如果检测代理设置用)扫描代理会用到，很重要这个**, UnknownHandler, HTTPHandler, HTTPDefaultErrorHandler, HTTPRedirectHandler, FTPHandler, FileHandler, HTTPErrorProcessor。
+  
   ```python
    import urllib2
    req = urllib2.Request('http://www.python.org/')
    opener=urllib2.build_opener()
    urllib2.install_opener(opener)
    f = opener.open(req)
-  
   ```
-  如上使用 `urllib2.install_opener()`设置 urllib2 的全局 opener。这样后面的使用会很方便，但不能做更细粒度的控制，比如想在程序中使用两个不同的 Proxy 设置等。比较好的做法是不使用 install_opener 去更改全局的设置，而只是直接调用 opener的open 方法代替全局的 urlopen 方法。
+  如上使用 `urllib2.install``_opener()`设置 urllib2 的全局 opener。这样后面的使用会很方便，但不能做更细粒度的控制，比如想在程序中使用两个不同的 Proxy 设置等。比较好的做法是不使用 install_opener 去更改全局的设置，而只是直接调用 opener的open 方法代替全局的 urlopen 方法。
   
   说到这Opener和Handler之间的操作听起来有点晕。整理下思路就清楚了。当获取一个URL时，可以使用一个opener（一个urllib2.OpenerDirector实例对象，可以由`build_opener`实例化生成）。正常情况下程序一直通过urlopen使用默认的opener（也就是说当你使用urlopen方法时，是在隐式的使用默认的opener对象），但也可以创建自定义的openers（通过操作 器handlers创建的opener实例）。所有的重活和麻烦都交给这些handlers来做。每一个handler知道如何以一种特定的协议（http，ftp等等）打开url，**或者如何处理打开url发生的HTTP重定向，或者包含的HTTP cookie。创建openers时如果想要安装特别的handlers来实现获取url（如获取一个处理cookie的opener，或者一个不处理重定向的opener）的话，先实例一个OpenerDirector对象，然后多次调用**`.add_handler(some_handler_instance)`**来创建一个opener**。或者，你可以用`build_opener`，这是一个很方便的创建opener对象的函数，它只有一个函数调用。`build_opener`默认会加入许多handlers，它提供了一个快速的方法添加更多东西和使默认的handler失效。
   `install_opener`如上所述也能用于创建一个opener对象，但是这个对象是（全局）默认的opener。这意味着调用urlopen将会用到你刚创建的opener。也就是说上面的代码可以等同于下面这段。这段代码最终还是使用的默认opener。一般情况下我们用`build_opener`为的是生成自定义opener，没有必要调用`install_opener`，除非是为了方便。
+   
    ```python
     import urllib2
     req = urllib2.Request('http://www.python.org/')
@@ -184,6 +191,7 @@ urlretrieve多数适用单纯的只下载的功能或者显示下载的进度等
 ### requests
 1. Requests 使用的是 urllib3，继承了urllib2的所有特性。Requests支持HTTP连接保持和连接池，支持使用cookie保持会话，支持文件上传，支持自动确定响应内容的编码，支持国际化的 URL 和 POST 数据自动编码。
 2. 举例：
+ 
  ```python
      import requests
      ...
@@ -201,6 +209,7 @@ urlretrieve多数适用单纯的只下载的功能或者显示下载的进度等
     
  ```
 3. 其他功能特性
+
 ```
 国际化域名和 URLs
 Keep-Alive & 连接池
@@ -225,5 +234,7 @@ Unicode 编码的响应体
 
 ### 更详细的相关介绍
 [**urllib  官网**](https://docs.python.org/2/library/urllib.html)
+
 [**urllib2 官网**](https://docs.python.org/2/library/urllib2.html)
+
 [**requests 官网**](http://cn.python-requests.org/zh_CN/latest/)
