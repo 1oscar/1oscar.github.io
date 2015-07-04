@@ -239,16 +239,18 @@ Unicode 编码的响应体
 适用于 Python 2.6—3.4
 线程安全
 ```
+
 IV. requests不是python自带的库，需要另外安装 easy_install or pip install 
+
 V. requests缺陷:直接使用不能异步调用，速度慢`（from others）`。官方的urllib可以替代它。
+
 VI. 个人不建议使用requests模块
 
 
 
 
 ### 更详细的相关介绍
+
 [**urllib  官网**](https://docs.python.org/2/library/urllib.html)
-
 [**urllib2 官网**](https://docs.python.org/2/library/urllib2.html)
-
 [**requests 官网**](http://cn.python-requests.org/zh_CN/latest/)
