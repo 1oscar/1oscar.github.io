@@ -200,10 +200,10 @@ urlretrieve多数适用单纯的只下载的功能或者显示下载的进度等
 3. 在对字典数据编码时候，用到的是urllib.urlencode()
 
 ### requests
-1. Requests 使用的是 urllib3，继承了urllib2的所有特性。Requests支持HTTP连接保持和连接池，支持使用cookie保持会话，支持文件上传，支持自动确定响应内容的编码，支持国际化的 URL 和 POST 数据自动编码。
-2. 举例：
+I. Requests 使用的是 urllib3，继承了urllib2的所有特性。Requests支持HTTP连接保持和连接池，支持使用cookie保持会话，支持文件上传，支持自动确定响应内容的编码，支持国际化的 URL 和 POST 数据自动编码。
+II. 举例：
  
- ```python
+```python
      import requests
      ...
 
@@ -216,32 +216,32 @@ urlretrieve多数适用单纯的只下载的功能或者显示下载的进度等
      resp.text     #返回的不是text数据
      resp.headers['content-type']  #返回text/html;charset=utf-8
      f = open('request_index.html', 'w')
-     f.write(page.encode('utf8'))          #test 发现requests抓下来的页面必须要编码写入,（抓下来的是unicode），urllib和urllib2抓下来可以直接写入，因为这两者抓下来的page是str
+     f.write(page.encode('utf8'))          
+     #test 发现requests抓下来的页面必须要编码\
+     #写入,（抓下来的是unicode），urllib和urllib2抓下来可以直接写入，
+     #因为这两者抓下来的page是str
     
- ```
-3. 其他功能特性
+```
+III. 其他功能特性
 
-    ```
-    国际化域名和 URLs<br>
-    Keep-Alive & 连接池
-    
-    持久的 Cookie 会话
-    
-    类浏览器式的 SSL 加密认证
-    
-    基本/摘要式的身份认证
-    优雅的键/值 Cookies
-    自动解压
-    Unicode 编码的响应体
-    多段文件上传
-    连接超时
-    支持 .netrc
-    适用于 Python 2.6—3.4
-    线程安全
-    ```
-4. requests不是python自带的库，需要另外安装 easy_install or pip install 
-5. requests缺陷:直接使用不能异步调用，速度慢`（from others）`。官方的urllib可以替代它。
-6. 个人不建议使用requests模块
+```
+国际化域名和 URLs
+Keep-Alive & 连接池
+持久的 Cookie 会话
+类浏览器式的 SSL 加密认证 
+基本/摘要式的身份认证
+优雅的键/值 Cookies
+自动解压
+Unicode 编码的响应体
+多段文件上传
+连接超时
+支持 .netrc
+适用于 Python 2.6—3.4
+线程安全
+```
+IV. requests不是python自带的库，需要另外安装 easy_install or pip install 
+V. requests缺陷:直接使用不能异步调用，速度慢`（from others）`。官方的urllib可以替代它。
+VI. 个人不建议使用requests模块
 
 
 
