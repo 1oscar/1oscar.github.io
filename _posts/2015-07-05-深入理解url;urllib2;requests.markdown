@@ -94,6 +94,7 @@ urlretrieve多数适用单纯的只下载的功能或者显示下载的进度等
     87     page = resp.read()
 
    ```
+   
    - urlopen方法也可通过建立了一个Request对象来明确指明想要获取的url。调用urlopen函数对请求的url返回一个response对象。这个response类似于一个file对象，所以用.read()函数可以操作这个response对象
    
    ```python
