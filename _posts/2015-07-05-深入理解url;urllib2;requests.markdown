@@ -86,7 +86,7 @@ urlretrieve多数适用单纯的只下载的功能或者显示下载的进度等
 1. urllib2模块定义的函数和类用来获取URL（主要是HTTP的），他提供一些复杂的接口用于处理： 基本认证，重定向，Cookies等。
 2. 常用方法和类
 - 2.1 urllib2.urlopen(url[, data][, timeout])  #传url时候，用法同urllib里的urlopen
-   - 它打开URL网址，url参数可以是一个字符串url或者是一个Request对象。可选的参数timeout，阻塞操作以秒为单位，如尝试连接（如果没有指定，将使用设置的全局默认timeout值）。实际上这仅适用于HTTP，HTTPS和FTP连接。
+    - 它打开URL网址，url参数可以是一个字符串url或者是一个Request对象。可选的参数timeout，阻塞操作以秒为单位，如尝试连接（如果没有指定，将使用设置的全局默认timeout值）。实际上这仅适用于HTTP，HTTPS和FTP连接。
    
    ```python
     85     url = 'http://m.sohu.com/?v=3&_once_=000025_v2tov3&_smuid=ICvXXapq5EfTpQTVq6Tpz'
@@ -95,10 +95,11 @@ urlretrieve多数适用单纯的只下载的功能或者显示下载的进度等
 
    ```
    
-   - urlopen方法也可通过建立了一个Request对象来明确指明想要获取的url。调用urlopen函数对请求的url返回一个response对象。这个response类似于一个file对象，所以用.read()函数可以操作这个response对象
+    - urlopen方法也可通过建立了一个Request对象来明确指明想要获取的url。调用urlopen函数对请求的url返回一个response对象。这个response类似于一个file对象，所以用.read()函数可以操作这个response对象
    
    ```python
-   url = 'http://m.sohu.com/?v=3&_once_=000025_v2tov3&_smuid=ICvXXapq5EfTpQTVq6Tpz'
+   url = 'http://m.sohu.com/?v=3&_once_=000025_v2tov3&_smuid\
+    =ICvXXapq5EfTpQTVq6Tpz'
    req = urllib2.Request(url)
    resp = urllib2.urlopen(req)
    page = resp.read()
