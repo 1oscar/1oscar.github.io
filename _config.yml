@@ -55,7 +55,8 @@ links:
 timezone:    Asia/Beijing
 future:      true
 highlighter:  pygments
-markdown:    redcarpet
+markdown:    kramdown
+#markdown:    redcarpet
 
 # https://github.com/mojombo/jekyll/wiki/Permalinks
 permalink:   /blog/:year/:month/:day/:title.html
