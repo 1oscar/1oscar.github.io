@@ -18,15 +18,17 @@ tags: python
      r.add_header('User-Agent', 'awesome fetcher')
      r.add_data(urllib.urlencode({'foo': 'bar'})
      response = urllib2.urlopen(r)     #post method
- ```
+```
 
 ### urllib 模块
 1. urlencode不能直接处理unicode对象，所以如果是unicode，需要先编码，有unicode转到utf8，举例：
- ```python
+
+```python
      urllib.urlencode (u'bl'.encode('utf-8'))
- ```
+```
 2. 示例
- ```python
+
+```python
      import urllib       #sohu 手机主页
      url = 'http://m.sohu.com/?v=3&_once_=000025_v2tov3&_smuid=ICvXXapq5EfTpQTVq6Tpz'
      resp = urllib.urlopen(url)
