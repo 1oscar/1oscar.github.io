@@ -5,12 +5,15 @@ comments: true
 share: true
 tags: python
 ---
+
 **环境： python 2.7X; OS X系统**
+
 ### url and urllib2 区别
 1. urllib和urllib2模块都做与请求URL相关的操作，但他们提供不同的功能。
 2. urllib2.urlopen accepts an instance of the Request class or a url, （whereas urllib.urlopen only accepts a url 中文意思就是：urllib2.urlopen可以接受一个Request对象或者url，（在接受Request对象时候，并以此可以来设置一个URL的headers），urllib.urlopen只接收一个url
 3. urllib 有urlencode,urllib2没有，这也是为什么总是urllib，urllib2常会一起使用的原因
- ```python
+
+```python
      r = Request(url='http://www.mysite.com')
      r.add_header('User-Agent', 'awesome fetcher')
      r.add_data(urllib.urlencode({'foo': 'bar'})
