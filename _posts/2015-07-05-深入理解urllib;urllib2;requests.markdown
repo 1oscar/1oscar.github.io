@@ -7,6 +7,7 @@ tags: python
 ---
 
 **环境： python 2.7X; OS X系统**
+[**相关测试代码**](https://github.com/1oscar/blog_codes/tree/master/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3urllib%3Burllib2%3Brequests)
 
 ### urllib and urllib2 区别
 1. urllib和urllib2模块都做与请求URL相关的操作，但他们提供不同的功能。
