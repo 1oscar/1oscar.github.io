@@ -49,8 +49,7 @@ image:
 
 ----
 
-- #### 联系邮箱 :  
-```python 
+- #### 联系邮箱 :  ```python 
 'ccbsfei at gmail.com'.replace('at', '@')
 ```
 
