@@ -173,8 +173,20 @@ urllib2.install_opener(opener)
 f = opener.open(req)
 ```
   如上使用 `urllib2.install``_opener()`设置 urllib2 的全局 opener。这样后面的使用会很方便，但不能做更细粒度的控制，比如想在程序中使用两个不同的 Proxy 设置等。比较好的做法是不使用 install_opener 去更改全局的设置，而只是直接调用 opener的open 方法代替全局的 urlopen 方法。  
-<br>说到这Opener和Handler之间的操作听起来有点晕。整理下思路就清楚了。当获取一个URL时，可以使用一个opener（一个urllib2.OpenerDirector实例对象，可以由`build_opener`实例化生成）。正常情况下程序一直通过urlopen使用默认的opener（也就是说当你使用urlopen方法时，是在隐式的使用默认的opener对象），但也可以创建自定义的openers（通过操作 器handlers创建的opener实例）。所有的重活和麻烦都交给这些handlers来做。每一个handler知道如何以一种特定的协议（http，ftp等等）打开url，**或者如何处理打开url发生的HTTP重定向，或者包含的HTTP cookie。创建openers时如果想要安装特别的handlers来实现获取url（如获取一个处理cookie的opener，或者一个不处理重定向的opener）的话，先实例一个OpenerDirector对象，然后多次调用**`.add_handler(some_handler_instance)`**来创建一个opener**。或者，你可以用`build_opener`，这是一个很方便的创建opener对象的函数，它只有一个函数调用。`build_opener`默认会加入许多handlers，它提供了一个快速的方法添加更多东西和使默认的handler失效。
-<br>`install_opener`如上所述也能用于创建一个opener对象，但是这个对象是（全局）默认的opener。这意味着调用urlopen将会用到你刚创建的opener。也就是说上面的代码可以等同于下面这段。这段代码最终还是使用的默认opener。一般情况下我们用`build_opener`为的是生成自定义opener，没有必要调用`install_opener`，除非是为了方便。
+
+说到这Opener和Handler之间的操作听起来有点晕。整理下思路就清楚了。当获取一个URL时，可以使用一
+个opener（一个urllib2.OpenerDirector实例对象，可以由`build_opener`实例化生成）。正常情况下程
+序一直通过urlopen使用默认的opener（也就是说当你使用urlopen方法时，是在隐式的使用默认的opener
+对象），但也可以创建自定义的openers（通过操作 器handlers创建的opener实例）。所有的重活和麻烦
+都交给这些handlers来做。每一个handler知道如何以一种特定的协议（http，ftp等等）打开url，**或
+者如何处理打开url发生的HTTP重定向，或者包含的HTTP cookie。创建openers时如果想要安装特别的han
+dlers来实现获取url（如获取一个处理cookie的opener，或者一个不处理重定向的opener）的话，先实例
+一个OpenerDirector对象，然后多次调用**`.add_handler(some_handler_instance)`**来创建一个opene
+r**。或者，你可以用`build_opener`，这是一个很方便的创建opener对象的函数，它只有一个函数调用
+。`build_opener`默认会加入许多handlers，它提供了一个快速的方法添加更多东西和使默认的handler
+失效。
+
+`install_opener`如上所述也能用于创建一个opener对象，但是这个对象是（全局）默认的opener。这意味着调用urlopen将会用到你刚创建的opener。也就是说上面的代码可以等同于下面这段。这段代码最终还是使用的默认opener。一般情况下我们用`build_opener`为的是生成自定义opener，没有必要调用`install_opener`，除非是为了方便。
    
 ```python
 import urllib2
