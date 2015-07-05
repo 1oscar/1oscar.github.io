@@ -42,7 +42,8 @@ II. 示例
 ['__doc__', '__init__', '__iter__', '__module__', '__repr__', 'close', 'code', 'fileno', 'fp', 'getcode', 'geturl', 'headers', 'info', 'next', 'read', 'readline', 'readlines', 'url']
  
 ```python
-print resp.getcode(), resp.geturl(), resp.info(), resp.headers, resp.url
+
+ print resp.getcode(), resp.geturl(), resp.info(), resp.headers, resp.url
  #resp.url和resp.geturl()结果一样
 ```
 
@@ -73,25 +74,26 @@ IV. urlretrieve()
 urlretrieve多数适用单纯的只下载的功能或者显示下载的进度等
  
 ```python
-  75     url = 'http://m.sohu.com/?v=3&_once_=000025_v2tov3&_smuid=ICvXXapq5EfTpQTVq6Tpz'
+ 75     url = 'http://m.sohu.com/?v=3&_once_=000025_v2tov3&_smuid=ICvXXapq5EfTpQTVq6Tpz'
  76     urllib.urlretrieve(url, './retrieve_index.html')
- #直接把url链接网页内容下载到retrieve_index.html里了，适用于单纯的下载的功能。urllib.urlretrieve(url, local_name, method)
+ #直接把url链接网页内容下载到retrieve_index.html里了，适用于单纯的下载的功能。
+ #urllib.urlretrieve(url, local_name, method)
 ```
 ### urllib2
-1. urllib2模块定义的函数和类用来获取URL（主要是HTTP的），他提供一些复杂的接口用于处理： 基本认证，重定向，Cookies等。
-2. 常用方法和类
-- 2.1 urllib2.urlopen(url[, data][, timeout])  #传url时候，用法同urllib里的urlopen
-    - 它打开URL网址，url参数可以是一个字符串url或者是一个Request对象。可选的参数timeout，阻塞操作以秒为单位，如尝试连接（如果没有指定，将使用设置的全局默认timeout值）。实际上这仅适用于HTTP，HTTPS和FTP连接。
+I. urllib2模块定义的函数和类用来获取URL（主要是HTTP的），他提供一些复杂的接口用于处理： 基本认证，重定向，Cookies等。
+II. 常用方法和类
+II.1 urllib2.urlopen(url[, data][, timeout])  #传url时候，用法同urllib里的urlopen
+    II.1.1 它打开URL网址，url参数可以是一个字符串url或者是一个Request对象。可选的参数timeout，阻塞操作以秒为单位，如尝试连接（如果没有指定，将使用设置的全局默认timeout值）。实际上这仅适用于HTTP，HTTPS和FTP连接。
    
-     ```python
-      85     url = 'http://m.sohu.com/?v=3&_once_=000025_v2tov3&_\
-      smuid=ICvXXapq5EfTpQTVq6Tpz'
-      86     resp = urllib2.urlopen(url)
-      87     page = resp.read()
+```python
+85     url = 'http://m.sohu.com/?v=3&_once_=000025_v2tov3&_\
+smuid=ICvXXapq5EfTpQTVq6Tpz'
+86     resp = urllib2.urlopen(url)
+87     page = resp.read()
 
-     ```
+```
    
-    - urlopen方法也可通过建立了一个Request对象来明确指明想要获取的url。调用urlopen函数对请求的url返回一个response对象。这个response类似于一个file对象，所以用.read()函数可以操作这个response对象
+    II.1.2 urlopen方法也可通过建立了一个Request对象来明确指明想要获取的url。调用urlopen函数对请求的url返回一个response对象。这个response类似于一个file对象，所以用.read()函数可以操作这个response对象
    
    ```python
    url = 'http://m.sohu.com/?v=3&_once_=000025_v2tov3&_smuid\
@@ -101,10 +103,10 @@ urlretrieve多数适用单纯的只下载的功能或者显示下载的进度等
    page = resp.read()
    
    ```
-- 2.2 class urllib2.Request(url[, data][, headers][, origin_req_host][, unverifiable])
-  - Request类是一个抽象的URL请求。5个参数的说明如下:
-    - URL——是一个字符串，其中包含一个有效的URL。
-    - data——是一个字符串，指定额外的数据发送到服务器，如果没有data需要发送可以为“None”。目前使用data的HTTP请求是唯一的。当请求含有data参数时，HTTP的请求为POST，而不是GET。数据应该是缓存在一个标准的application/x-www-form-urlencoded格式中。urllib.urlencode()函数用映射或2元组，返回一个这种格式的字符串。通俗的说就是如果想向一个URL发送数据（通常这些数据是代表一些CGI脚本或者其他的web应用）。例如在网上填的form（表单）时，浏览器会POST表单的内容，这些数据需要被以标准的格式编码（encode），然后作为一个数据参数传送给Request对象。Encoding是在urlib模块中完成的，而不是在urlib2中完成的。下面是个例子：
+II.2 class urllib2.Request(url[, data][, headers][, origin_req_host][, unverifiable])
+  II.2.1 Request类是一个抽象的URL请求。5个参数的说明如下:
+    II.2.1.1 URL——是一个字符串，其中包含一个有效的URL。
+    II.2.1.2 data——是一个字符串，指定额外的数据发送到服务器，如果没有data需要发送可以为“None”。目前使用data的HTTP请求是唯一的。当请求含有data参数时，HTTP的请求为POST，而不是GET。数据应该是缓存在一个标准的application/x-www-form-urlencoded格式中。urllib.urlencode()函数用映射或2元组，返回一个这种格式的字符串。通俗的说就是如果想向一个URL发送数据（通常这些数据是代表一些CGI脚本或者其他的web应用）。例如在网上填的form（表单）时，浏览器会POST表单的内容，这些数据需要被以标准的格式编码（encode），然后作为一个数据参数传送给Request对象。Encoding是在urlib模块中完成的，而不是在urlib2中完成的。下面是个例子：
      
      ```python
       import urllib
