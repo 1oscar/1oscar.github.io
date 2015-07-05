@@ -30,7 +30,8 @@ II. 示例
 
 ```python
  import urllib       #sohu 手机主页
- url = 'http://m.sohu.com/?v=3&_once_=000025_v2tov3&_smuid=ICvXXapq5EfTpQTVq6Tpz'
+ url = 'http://m.sohu.com/?v=3&_once_=000025_v2tov3&_smuid=\
+       ICvXXapq5EfTpQTVq6Tpz'
  resp = urllib.urlopen(url)
  page = resp.read()
  f = open('./urllib_index.html', 'w')
@@ -74,7 +75,8 @@ IV. urlretrieve()
 urlretrieve多数适用单纯的只下载的功能或者显示下载的进度等
  
 ```python
- 75     url = 'http://m.sohu.com/?v=3&_once_=000025_v2tov3&_smuid=ICvXXapq5EfTpQTVq6Tpz'
+ 75     url = 'http://m.sohu.com/?v=3&_once_=000025_v2tov3&_\
+              smuid=ICvXXapq5EfTpQTVq6Tpz'
  76     urllib.urlretrieve(url, './retrieve_index.html')
  #直接把url链接网页内容下载到retrieve_index.html里了，适用于单纯的下载的功能。
  #urllib.urlretrieve(url, local_name, method)
@@ -93,7 +95,7 @@ smuid=ICvXXapq5EfTpQTVq6Tpz'
 
 ```
    
-    II.1.2 urlopen方法也可通过建立了一个Request对象来明确指明想要获取的url。调用urlopen函数对请求的url返回一个response对象。这个response类似于一个file对象，所以用.read()函数可以操作这个response对象
+II.1.2 urlopen方法也可通过建立了一个Request对象来明确指明想要获取的url。调用urlopen函数对请求的url返回一个response对象。这个response类似于一个file对象，所以用.read()函数可以操作这个response对象
    
    ```python
    url = 'http://m.sohu.com/?v=3&_once_=000025_v2tov3&_smuid\
@@ -104,68 +106,68 @@ smuid=ICvXXapq5EfTpQTVq6Tpz'
    
    ```
 II.2 class urllib2.Request(url[, data][, headers][, origin_req_host][, unverifiable])
-  II.2.1 Request类是一个抽象的URL请求。5个参数的说明如下:
-    II.2.1.1 URL——是一个字符串，其中包含一个有效的URL。
-    II.2.1.2 data——是一个字符串，指定额外的数据发送到服务器，如果没有data需要发送可以为“None”。目前使用data的HTTP请求是唯一的。当请求含有data参数时，HTTP的请求为POST，而不是GET。数据应该是缓存在一个标准的application/x-www-form-urlencoded格式中。urllib.urlencode()函数用映射或2元组，返回一个这种格式的字符串。通俗的说就是如果想向一个URL发送数据（通常这些数据是代表一些CGI脚本或者其他的web应用）。例如在网上填的form（表单）时，浏览器会POST表单的内容，这些数据需要被以标准的格式编码（encode），然后作为一个数据参数传送给Request对象。Encoding是在urlib模块中完成的，而不是在urlib2中完成的。下面是个例子：
+II.2.1 Request类是一个抽象的URL请求。5个参数的说明如下:
+II.2.1.1 URL——是一个字符串，其中包含一个有效的URL。
+II.2.1.2 data——是一个字符串，指定额外的数据发送到服务器，如果没有data需要发送可以为“None”。目前使用data的HTTP请求是唯一的。当请求含有data参数时，HTTP的请求为POST，而不是GET。数据应该是缓存在一个标准的application/x-www-form-urlencoded格式中。urllib.urlencode()函数用映射或2元组，返回一个这种格式的字符串。通俗的说就是如果想向一个URL发送数据（通常这些数据是代表一些CGI脚本或者其他的web应用）。例如在网上填的form（表单）时，浏览器会POST表单的内容，这些数据需要被以标准的格式编码（encode），然后作为一个数据参数传送给Request对象。Encoding是在urlib模块中完成的，而不是在urlib2中完成的。下面是个例子：
      
-     ```python
-      import urllib
-      import urllib2
-      url = 'http://www.someserver.com/cgi-bin/register.cgi'
-      values = {'name' : 'Michael Foord',
-               'location' : 'Northampton',
-               'language' : 'Python' }
-     data = urllib.urlencode(values)      
-     req = urllib2.Request(url, data)   #send post
-     response = urllib2.urlopen(req)
-     page = response.read()
+```python
+import urllib
+import urllib2
+url = 'http://www.someserver.com/cgi-bin/register.cgi'
+values = {'name' : 'Michael Foord',
+       'location' : 'Northampton',
+       'language' : 'Python' }
+data = urllib.urlencode(values)      
+req = urllib2.Request(url, data)   #send post
+response = urllib2.urlopen(req)
+page = response.read()
+
+```
+II.2.1.3 headers——是字典类型，头字典可以作为参数在request时直接传入，也可以把每个键和值作为参数调用add_header()方法来添加。作为辨别浏览器身份的User-Agent header是经常被用来恶搞和伪装的，因为一些HTTP服务只允许某些请求来自常见的浏览器而不是脚本，或是针对不同的浏览器返回不同的版本。例如，Mozilla Firefox浏览器被识别为“Mozilla/5.0 (X11; U; Linux i686) Gecko/20071127 Firefox/2.0.0.11”。默认情况下，urlib2把自己识别为Python-urllib/x.y（这里的xy是python发行版的主要或次要的版本号，如在Python 2.6中，urllib2的默认用户代理字符串是“Python-urllib/2.6。下面的例子和上面的区别就是在请求时加了一个headers，模仿IE浏览器提交请求。
      
-     ```
-    - headers——是字典类型，头字典可以作为参数在request时直接传入，也可以把每个键和值作为参数调用add_header()方法来添加。作为辨别浏览器身份的User-Agent header是经常被用来恶搞和伪装的，因为一些HTTP服务只允许某些请求来自常见的浏览器而不是脚本，或是针对不同的浏览器返回不同的版本。例如，Mozilla Firefox浏览器被识别为“Mozilla/5.0 (X11; U; Linux i686) Gecko/20071127 Firefox/2.0.0.11”。默认情况下，urlib2把自己识别为Python-urllib/x.y（这里的xy是python发行版的主要或次要的版本号，如在Python 2.6中，urllib2的默认用户代理字符串是“Python-urllib/2.6。下面的例子和上面的区别就是在请求时加了一个headers，模仿IE浏览器提交请求。
-     
-     ```python
-      import urllib
-      
-      import urllib2
-      
-      url = 'http://www.someserver.com/cgi-bin/register.cgi'
-      
-      user_agent = 'Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)'
-      
-      values = {'name' : 'Michael Foord',
-                'location' : 'Northampton',
-                'language' : 'Python' }
-      
-      headers = { 'User-Agent' : user_agent }
-      
-      data = urllib.urlencode(values)
-      
-      req = urllib2.Request(url, data, headers)
-      
-      response = urllib2.urlopen(req)
-      
-      the_page = response.read()
-     ```
+```python
+import urllib
+
+import urllib2
+
+url = 'http://www.someserver.com/cgi-bin/register.cgi'
+
+user_agent = 'Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)'
+
+values = {'name' : 'Michael Foord',
+        'location' : 'Northampton',
+        'language' : 'Python' }
+
+headers = { 'User-Agent' : user_agent }
+
+data = urllib.urlencode(values)
+
+req = urllib2.Request(url, data, headers)
+
+response = urllib2.urlopen(req)
+
+the_page = response.read()
+```
     
-     标准的headers组成是(Content-Length, Content-Type and Host)，只有在Request对象调用urlopen()（上面的例子也属于这个情况）或者OpenerDirector.open()时加入。两种情况的例子如下：
+标准的headers组成是(Content-Length, Content-Type and Host)，只有在Request对象调用urlopen()（上面的例子也属于这个情况）或者OpenerDirector.open()时加入。两种情况的例子如下：
     使用headers参数构造Request对象，如上例在生成Request对象时已经初始化header，而下例是Request对象调用add_header(key, val)方法附加header（Request对象的方法下面再介绍）：
      
-     ```python
-      import urllib2
-      req = urllib2.Request('http://www.example.com/')
-      req.add_header('Referer', 'http://www.python.org/')    #http是无状态的协议，上一次客户端的请求与下一次客户端到服务器的请求无关系的，多数省略这一步
-      r = urllib2.urlopen(req)
+```python
+import urllib2
+req = urllib2.Request('http://www.example.com/')
+req.add_header('Referer', 'http://www.python.org/')    #http是无状态的协议，上一次客户端的请求与下一次客户端到服务器的请求无关系的，多数省略这一步
+r = urllib2.urlopen(req)
+
+```
+OpenerDirector为每一个Request自动加上一个User-Agent header，所以第二种方法如下（urllib2.build_opener会返回一个OpenerDirector对象，关于urllib2.build_opener类下面再说）：
      
-     ```
-    OpenerDirector为每一个Request自动加上一个User-Agent header，所以第二种方法如下（urllib2.build_opener会返回一个OpenerDirector对象，关于urllib2.build_opener类下面再说）：
-     
-     ```python
-      import urllib2
-      opener = urllib2.build_opener()
-      opener.addheaders = [('User-agent', 'Mozilla/5.0')]
-      opener.open('http://www.example.com/')
-     ```
-- 2.3 urllib2.install_opener(opener)和urllib2.build_opener([handler, ...])　
+```python
+import urllib2
+opener = urllib2.build_opener()
+opener.addheaders = [('User-agent', 'Mozilla/5.0')]
+opener.open('http://www.example.com/')
+```
+II.3 urllib2.install_opener(opener)和urllib2.build_opener([handler, ...])　
   install_opener和build_opener这两个方法通常都是在一起用,也有时候build_opener单独使用来得到OpenerDirector对象。
   install_opener实例化会得到OpenerDirector 对象用来赋予全局变量opener。如果想用这个opener来调用urlopen，那么就必须实例化得到OpenerDirector；这样就可以简单的调用OpenerDirector.open()来代替urlopen()。
   build_opener实例化也会得到OpenerDirector对象，其中参数handlers可以被BaseHandler或他的子类实例化。子类中可以通过以下实例化：**ProxyHandler** **(如果检测代理设置用)扫描代理会用到，很重要这个**, UnknownHandler, HTTPHandler, HTTPDefaultErrorHandler, HTTPRedirectHandler, FTPHandler, FileHandler, HTTPErrorProcessor。
