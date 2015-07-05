@@ -21,67 +21,62 @@ tags: python
 ```
 
 ### urllib 模块
-1. urlencode不能直接处理unicode对象，所以如果是unicode，需要先编码，有unicode转到utf8，举例：
+I. urlencode不能直接处理unicode对象，所以如果是unicode，需要先编码，有unicode转到utf8，举例：
 
-    ```python
-      urllib.urlencode (u'bl'.encode('utf-8'))
-    ```
-2. 示例
+```python
+  urllib.urlencode (u'bl'.encode('utf-8'))
+```
+II. 示例
 
 ```python
  import urllib       #sohu 手机主页
- 
  url = 'http://m.sohu.com/?v=3&_once_=000025_v2tov3&_smuid=ICvXXapq5EfTpQTVq6Tpz'
- 
  resp = urllib.urlopen(url)
- 
  page = resp.read()
- 
  f = open('./urllib_index.html', 'w')
- 
  f.write(page)
- 
  print dir(resp)
 ```
- 结果:
+结果:
 
-    ['__doc__', '__init__', '__iter__', '__module__', '__repr__', 'close', 'code', 'fileno', 'fp', 'getcode', 'geturl', 'headers', 'info', 'next', 'read', 'readline', 'readlines', 'url']
+['__doc__', '__init__', '__iter__', '__module__', '__repr__', 'close', 'code', 'fileno', 'fp', 'getcode', 'geturl', 'headers', 'info', 'next', 'read', 'readline', 'readlines', 'url']
  
-    ```python
-    print resp.getcode(), resp.geturl(), resp.info(), resp.headers, resp.url
-    #resp.url和resp.geturl()结果一样
-    ```
-3. 编解码示例
+```python
+print resp.getcode(), resp.geturl(), resp.info(), resp.headers, resp.url
+ #resp.url和resp.geturl()结果一样
+```
+
+III. 编解码示例
 urllib.quote和urllib.urlencode都是编码，但用法不一样
  
-    ```python
-     48     s = urllib.quote('This is python')  #编码
-     49     print 'quote:\t'+s    ＃空格用%20替代
-     50     s_un = urllib.unquote(s)    ＃解码
-     51     print 'unquote:\t'+s_un
-     52     s_plus = urllib.quote_plus('This is python')  ＃编码
-     53     print 'quote_plus:\t'+s_plus            ＃空格用＋替代
-     54     s_unplus = urllib.unquote_plus(s_plus)       ＃解码
-     55     print 's_unplus:\t'+s_unplus
-     56     s_dict = {'name': 'dkf', 'pass': '1234'}
-     57     s_encode = urllib.urlencode(s_dict)    ＃编码字典转换成url参数 
-     58     print 's_encode:\t'+s_encode
-     结果：
-     quote:	This%20is%20python
-     unquote:	This is python
-     quote_plus:	This+is+python
-     s_unplus:	This is python
-     s_encode:	name=dkf&pass=1234
+```python
+ 48     s = urllib.quote('This is python')  #编码
+ 49     print 'quote:\t'+s    ＃空格用%20替代
+ 50     s_un = urllib.unquote(s)    ＃解码
+ 51     print 'unquote:\t'+s_un
+ 52     s_plus = urllib.quote_plus('This is python')  ＃编码
+ 53     print 'quote_plus:\t'+s_plus            ＃空格用＋替代
+ 54     s_unplus = urllib.unquote_plus(s_plus)       ＃解码
+ 55     print 's_unplus:\t'+s_unplus
+ 56     s_dict = {'name': 'dkf', 'pass': '1234'}
+ 57     s_encode = urllib.urlencode(s_dict)    ＃编码字典转换成url参数 
+ 58     print 's_encode:\t'+s_encode
+ 结果：
+ quote:	This%20is%20python
+ unquote:	This is python
+ quote_plus:	This+is+python
+ s_unplus:	This is python
+ s_encode:	name=dkf&pass=1234
 
-    ```
-4. urlretrieve()
+```
+IV. urlretrieve()
 urlretrieve多数适用单纯的只下载的功能或者显示下载的进度等
  
-    ```python
-      75     url = 'http://m.sohu.com/?v=3&_once_=000025_v2tov3&_smuid=ICvXXapq5EfTpQTVq6Tpz'
-     76     urllib.urlretrieve(url, './retrieve_index.html')
-     #直接把url链接网页内容下载到retrieve_index.html里了，适用于单纯的下载的功能。urllib.urlretrieve(url, local_name, method)
-    ```
+```python
+  75     url = 'http://m.sohu.com/?v=3&_once_=000025_v2tov3&_smuid=ICvXXapq5EfTpQTVq6Tpz'
+ 76     urllib.urlretrieve(url, './retrieve_index.html')
+ #直接把url链接网页内容下载到retrieve_index.html里了，适用于单纯的下载的功能。urllib.urlretrieve(url, local_name, method)
+```
 ### urllib2
 1. urllib2模块定义的函数和类用来获取URL（主要是HTTP的），他提供一些复杂的接口用于处理： 基本认证，重定向，Cookies等。
 2. 常用方法和类
