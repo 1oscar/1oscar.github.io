@@ -128,19 +128,29 @@ urlretrieve多数适用单纯的只下载的功能或者显示下载的进度等
      
      ```python
       import urllib
+      
       import urllib2
+      
       url = 'http://www.someserver.com/cgi-bin/register.cgi'
+      
       user_agent = 'Mozilla/4.0 (compatible; MSIE 5.5; Windows NT)'
+      
       values = {'name' : 'Michael Foord',
                 'location' : 'Northampton',
                 'language' : 'Python' }
+      
       headers = { 'User-Agent' : user_agent }
+      
       data = urllib.urlencode(values)
+      
       req = urllib2.Request(url, data, headers)
+      
       response = urllib2.urlopen(req)
+      
       the_page = response.read()
      ```
-    标准的headers组成是(Content-Length, Content-Type and Host)，只有在Request对象调用urlopen()（上面的例子也属于这个情况）或者OpenerDirector.open()时加入。两种情况的例子如下：
+    
+     标准的headers组成是(Content-Length, Content-Type and Host)，只有在Request对象调用urlopen()（上面的例子也属于这个情况）或者OpenerDirector.open()时加入。两种情况的例子如下：
     使用headers参数构造Request对象，如上例在生成Request对象时已经初始化header，而下例是Request对象调用add_header(key, val)方法附加header（Request对象的方法下面再介绍）：
      
      ```python
@@ -189,10 +199,10 @@ urlretrieve多数适用单纯的只下载的功能或者显示下载的进度等
    info() — 返回页面的原信息就像一个字段的对象， 如headers，它以mimetools.Message实例为格式(可以参考HTTP Headers说明)。
    getcode() — 返回响应的HTTP状态代码，运行下面代码可以得到code=200
    当不能处理一个response时，urlopen抛出一个URLError（对于python APIs，内建异常如，ValueError, TypeError 等也会被抛出。）
-- HTTPError是HTTP URL在特别的情况下被抛出的URLError的一个子类。下面就详细说说URLError和HTTPError。
+ - HTTPError是HTTP URL在特别的情况下被抛出的URLError的一个子类。下面就详细说说URLError和HTTPError。
   URLError——handlers当运行出现问题时（通常是因为没有网络连接也就是没有路由到指定的服务器，或在指定的服务器不存在）
-- HTTPError——HTTPError是URLError的子类。每个来自服务器HTTP的response都包含“status code”. 有时status code不能处理这个request. 默认的处理程序将处理这些异常的responses。例如，urllib2发现response的URL与你请求的URL不同时也就是发生了重定向时，会自动处理。对于不能处理的请求, urlopen将抛出HTTPError异常. 典型的错误包含‘404’ (没有找到页面), ‘403’ (禁止请求),‘401’ (需要验证)等。它包含2个重要的属性reason和code。
-- 程序对于重定向时默认处理的
+ - HTTPError——HTTPError是URLError的子类。每个来自服务器HTTP的response都包含“status code”. 有时status code不能处理这个request. 默认的处理程序将处理这些异常的responses。例如，urllib2发现response的URL与你请求的URL不同时也就是发生了重定向时，会自动处理。对于不能处理的请求, urlopen将抛出HTTPError异常. 典型的错误包含‘404’ (没有找到页面), ‘403’ (禁止请求),‘401’ (需要验证)等。它包含2个重要的属性reason和code。
+ - 程序对于重定向时默认处理的
    
 ### 总结
 1. 如果只是单纯的下载或者显示下载进度，不对下载后的内容做处理等，比如下载图片，css，js文件等，可以用urlilb.urlretrieve（）
