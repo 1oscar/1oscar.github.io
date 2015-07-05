@@ -49,9 +49,9 @@ image:
 
 ----
 
-- #### 联系邮箱 :  ```python 
-'ccbsfei at gmail.com'.replace('at', '@')
-```
+- #### 联系邮箱 :   ```python 
+                        'ccbsfei at gmail.com'.replace('at', '@') 
+                    ```
 
 - #### github :  [**段家公子**](https://github.com/1oscar)
 
