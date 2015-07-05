@@ -161,41 +161,40 @@ opener.addheaders = [('User-agent', 'Mozilla/5.0')]
 opener.open('http://www.example.com/')
 ```
 II.3 urllib2.install_opener(opener)和urllib2.build_opener([handler, ...])　
+<br>install_opener和build_opener这两个方法通常都是在一起用,也有时候build_opener单独使用来得到OpenerDirector对象。
+<br>install_opener实例化会得到OpenerDirector 对象用来赋予全局变量opener。如果想用这个opener来调用urlopen，那么就必须实例化得到OpenerDirector；这样就可以简单的调用OpenerDirector.open()来代替urlopen()。
+<br>build_opener实例化也会得到OpenerDirector对象，其中参数handlers可以被BaseHandler或他的子类实例化。子类中可以通过以下实例化：**ProxyHandler** **(如果检测代理设置用)扫描代理会用到，很重要这个**, UnknownHandler, HTTPHandler, HTTPDefaultErrorHandler, HTTPRedirectHandler, FTPHandler, FileHandler, HTTPErrorProcessor。
+  
+```python
+import urllib2
+req = urllib2.Request('http://www.python.org/')
+opener=urllib2.build_opener()
+urllib2.install_opener(opener)
+f = opener.open(req)
+```
+  如上使用 `urllib2.install``_opener()`设置 urllib2 的全局 opener。这样后面的使用会很方便，但不能做更细粒度的控制，比如想在程序中使用两个不同的 Proxy 设置等。比较好的做法是不使用 install_opener 去更改全局的设置，而只是直接调用 opener的open 方法代替全局的 urlopen 方法。  
+<br>说到这Opener和Handler之间的操作听起来有点晕。整理下思路就清楚了。当获取一个URL时，可以使用一个opener（一个urllib2.OpenerDirector实例对象，可以由`build_opener`实例化生成）。正常情况下程序一直通过urlopen使用默认的opener（也就是说当你使用urlopen方法时，是在隐式的使用默认的opener对象），但也可以创建自定义的openers（通过操作 器handlers创建的opener实例）。所有的重活和麻烦都交给这些handlers来做。每一个handler知道如何以一种特定的协议（http，ftp等等）打开url，**或者如何处理打开url发生的HTTP重定向，或者包含的HTTP cookie。创建openers时如果想要安装特别的handlers来实现获取url（如获取一个处理cookie的opener，或者一个不处理重定向的opener）的话，先实例一个OpenerDirector对象，然后多次调用**`.add_handler(some_handler_instance)`**来创建一个opener**。或者，你可以用`build_opener`，这是一个很方便的创建opener对象的函数，它只有一个函数调用。`build_opener`默认会加入许多handlers，它提供了一个快速的方法添加更多东西和使默认的handler失效。
+<br>`install_opener`如上所述也能用于创建一个opener对象，但是这个对象是（全局）默认的opener。这意味着调用urlopen将会用到你刚创建的opener。也就是说上面的代码可以等同于下面这段。这段代码最终还是使用的默认opener。一般情况下我们用`build_opener`为的是生成自定义opener，没有必要调用`install_opener`，除非是为了方便。
+   
+```python
+import urllib2
+req = urllib2.Request('http://www.python.org/')
+opener=urllib2.build_opener()       ＃ 创建opener对象
+urllib2.install_opener(opener)      ＃定义全局默认opener
+f = urllib2.urlopen(req)          #urlopen使用默认opener，但是install_opener
+ #已经把opener设为全局默认了，这里便是使用上面的建立的opener
 
-install_opener和build_opener这两个方法通常都是在一起用,也有时候build_opener单独使用来得到OpenerDirector对象。
-  <br>install_opener实例化会得到OpenerDirector 对象用来赋予全局变量opener。如果想用这个opener来调用urlopen，那么就必须实例化得到OpenerDirector；这样就可以简单的调用OpenerDirector.open()来代替urlopen()。
-  build_opener实例化也会得到OpenerDirector对象，其中参数handlers可以被BaseHandler或他的子类实例化。子类中可以通过以下实例化：**ProxyHandler** **(如果检测代理设置用)扫描代理会用到，很重要这个**, UnknownHandler, HTTPHandler, HTTPDefaultErrorHandler, HTTPRedirectHandler, FTPHandler, FileHandler, HTTPErrorProcessor。
-  
-  ```python
-   import urllib2
-   req = urllib2.Request('http://www.python.org/')
-   opener=urllib2.build_opener()
-   urllib2.install_opener(opener)
-   f = opener.open(req)
-  ```
-  如上使用 `urllib2.install``_opener()`设置 urllib2 的全局 opener。这样后面的使用会很方便，但不能做更细粒度的控制，比如想在程序中使用两个不同的 Proxy 设置等。比较好的做法是不使用 install_opener 去更改全局的设置，而只是直接调用 opener的open 方法代替全局的 urlopen 方法。
-  
-  说到这Opener和Handler之间的操作听起来有点晕。整理下思路就清楚了。当获取一个URL时，可以使用一个opener（一个urllib2.OpenerDirector实例对象，可以由`build_opener`实例化生成）。正常情况下程序一直通过urlopen使用默认的opener（也就是说当你使用urlopen方法时，是在隐式的使用默认的opener对象），但也可以创建自定义的openers（通过操作 器handlers创建的opener实例）。所有的重活和麻烦都交给这些handlers来做。每一个handler知道如何以一种特定的协议（http，ftp等等）打开url，**或者如何处理打开url发生的HTTP重定向，或者包含的HTTP cookie。创建openers时如果想要安装特别的handlers来实现获取url（如获取一个处理cookie的opener，或者一个不处理重定向的opener）的话，先实例一个OpenerDirector对象，然后多次调用**`.add_handler(some_handler_instance)`**来创建一个opener**。或者，你可以用`build_opener`，这是一个很方便的创建opener对象的函数，它只有一个函数调用。`build_opener`默认会加入许多handlers，它提供了一个快速的方法添加更多东西和使默认的handler失效。
-  `install_opener`如上所述也能用于创建一个opener对象，但是这个对象是（全局）默认的opener。这意味着调用urlopen将会用到你刚创建的opener。也就是说上面的代码可以等同于下面这段。这段代码最终还是使用的默认opener。一般情况下我们用`build_opener`为的是生成自定义opener，没有必要调用`install_opener`，除非是为了方便。
-   
-   ```python
-    import urllib2
-    req = urllib2.Request('http://www.python.org/')
-    opener=urllib2.build_opener()       ＃ 创建opener对象
-    urllib2.install_opener(opener)      ＃定义全局默认opener
-    f = urllib2.urlopen(req)          #urlopen使用默认opener，但是install_opener已经把opener设为全局默认了，这里便是使用上面的建立的opener
-   
-   ```
-3. 异常处理
- 　当我们调用urllib2.urlopen的时候不会总是这么顺利，就像浏览器打开url时有时也会报   错，所以就需要我们有应对异常的处理。说到异常，我们先来了解返回的response对象的   几个常用的方法：
-   geturl() — 返回检索的URL资源，这个是返回的真正url，通常是用来鉴定是否重定向的
-   info() — 返回页面的原信息就像一个字段的对象， 如headers，它以mimetools.Message实例为格式(可以参考HTTP Headers说明)。
-   getcode() — 返回响应的HTTP状态代码，运行下面代码可以得到code=200
-   当不能处理一个response时，urlopen抛出一个URLError（对于python APIs，内建异常如，ValueError, TypeError 等也会被抛出。）
- - HTTPError是HTTP URL在特别的情况下被抛出的URLError的一个子类。下面就详细说说URLError和HTTPError。
+```
+III. 异常处理
+<br>当我们调用urllib2.urlopen的时候不会总是这么顺利，就像浏览器打开url时有时也会报   错，所以就需要我们有应对异常的处理。说到异常，我们先来了解返回的response对象的   几个常用的方法：
+<br>geturl() — 返回检索的URL资源，这个是返回的真正url，通常是用来鉴定是否重定向的
+<br>info() — 返回页面的原信息就像一个字段的对象， 如headers，它以mimetools.Message实例为格式(可以参考HTTP Headers说明)。
+<br>getcode() — 返回响应的HTTP状态代码，运行下面代码可以得到code=200
+当不能处理一个response时，urlopen抛出一个URLError（对于python APIs，内建异常如，ValueError, TypeError 等也会被抛出。）
+- HTTPError是HTTP URL在特别的情况下被抛出的URLError的一个子类。下面就详细说说URLError和HTTPError。
   URLError——handlers当运行出现问题时（通常是因为没有网络连接也就是没有路由到指定的服务器，或在指定的服务器不存在）
- - HTTPError——HTTPError是URLError的子类。每个来自服务器HTTP的response都包含“status code”. 有时status code不能处理这个request. 默认的处理程序将处理这些异常的responses。例如，urllib2发现response的URL与你请求的URL不同时也就是发生了重定向时，会自动处理。对于不能处理的请求, urlopen将抛出HTTPError异常. 典型的错误包含‘404’ (没有找到页面), ‘403’ (禁止请求),‘401’ (需要验证)等。它包含2个重要的属性reason和code。
- - 程序对于重定向时默认处理的
+- HTTPError——HTTPError是URLError的子类。每个来自服务器HTTP的response都包含“status code”. 有时status code不能处理这个request. 默认的处理程序将处理这些异常的responses。例如，urllib2发现response的URL与你请求的URL不同时也就是发生了重定向时，会自动处理。对于不能处理的请求, urlopen将抛出HTTPError异常. 典型的错误包含‘404’ (没有找到页面), ‘403’ (禁止请求),‘401’ (需要验证)等。它包含2个重要的属性reason和code。
+- 程序对于重定向时默认处理的
    
 ### 总结
 1. 如果只是单纯的下载或者显示下载进度，不对下载后的内容做处理等，比如下载图片，css，js文件等，可以用urlilb.urlretrieve（）
