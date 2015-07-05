@@ -28,21 +28,21 @@ tags: python
     ```
 2. 示例
 
-    ```python
-     import urllib       #sohu 手机主页
-     
-     url = 'http://m.sohu.com/?v=3&_once_=000025_v2tov3&_smuid=ICvXXapq5EfTpQTVq6Tpz'
-     
-     resp = urllib.urlopen(url)
-     
-     page = resp.read()
-     
-     f = open('./urllib_index.html', 'w')
-     
-     f.write(page)
-     
-     print dir(resp)
-    ```
+```python
+ import urllib       #sohu 手机主页
+ 
+ url = 'http://m.sohu.com/?v=3&_once_=000025_v2tov3&_smuid=ICvXXapq5EfTpQTVq6Tpz'
+ 
+ resp = urllib.urlopen(url)
+ 
+ page = resp.read()
+ 
+ f = open('./urllib_index.html', 'w')
+ 
+ f.write(page)
+ 
+ print dir(resp)
+```
  结果:
 
     ['__doc__', '__init__', '__iter__', '__module__', '__repr__', 'close', 'code', 'fileno', 'fp', 'getcode', 'geturl', 'headers', 'info', 'next', 'read', 'readline', 'readlines', 'url']
