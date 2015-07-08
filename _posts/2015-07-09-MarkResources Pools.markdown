@@ -6,7 +6,7 @@ share: true
 tags: python
 ---
 
-## 爬虫相关
+## 一: 爬虫相关
 
 ### mechanize
 **与web服务器交互复杂,如get，post等，使用 mechanize（模拟登陆);BeautifulSoup提取数据** 
@@ -29,4 +29,5 @@ tags: python
 ```
 
 ### 爬虫框架
-[**海量数据爬虫框架搭建**](http://blog.jobbole.com/46673/)
+
+1. [**海量数据爬虫框架搭建**](http://blog.jobbole.com/46673/)
