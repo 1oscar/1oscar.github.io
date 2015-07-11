@@ -33,8 +33,9 @@ tags: python
     $python 1.py
     out:  I'm a method in B
     #out : I'm a method in A
+    #如果想要输出 `I'm a method in B`,需要明确指出`_A__method()`
  ```
- 如果想要输出 `I'm a method in B`,需要明确指出`_A__method()`
+
 4. `__`双下划线开头双下划线结尾`__`：指那些包含在用户无法控制的命名空间中的“魔术”对象或属性，如类成员的`__name__` 、`__doc__`、`__init__、__import__、__file__、`等。推荐永远不要将这样的命名方式应用于自己的变量或函数。这些方法也是不可调用的，这是python calls的方法。可以重写这些方法。[**special-method-names documentation** ](https://docs.python.org/2/reference/datamodel.html#special-method-names)
 
 ### **二：Python3.x和Python2.x的区别** 
@@ -50,10 +51,9 @@ tags: python
 
 1. 继承类:   [**base class**](https://github.com/1oscar/blog_codes/blob/master/python%20%E6%9F%A5%E6%BC%8F%E8%A1%A5%E7%BC%BA:%E4%B8%80/test_baseclass.py) **Singleton class 需要重载__new__()，__new__()返回一个instance ,new class override Singleton class**
 2. 装饰器( 需要用到类装饰器,非函数装饰器，自动调用构造函数): [**decorate class**](https://github.com/1oscar/blog_codes/blob/master/python%20%E6%9F%A5%E6%BC%8F%E8%A1%A5%E7%BC%BA:%E4%B8%80/test_decorates.py) (**Singleton is defined  函数,使用装饰器时用class name 做参数**)
-3. metaclass:[**\_\_metaclass\_\_**](https://github.com/1oscar/blog_codes/blob/master/python%20%E6%9F%A5%E6%BC%8F%E8%A1%A5%E7%BC%BA:%E4%B8%80/test_metaclass.py)  (**Singleton 可调用，重载__call__**)
+3. metaclass:[**\_\_metaclass\_\_**](https://github.com/1oscar/blog_codes/blob/master/python%20%E6%9F%A5%E6%BC%8F%E8%A1%A5%E7%BC%BA:%E4%B8%80/test_metaclass.py)  (**Singleton 可调用，重载\_\_call\_\_**)
 
-### **五:staticmethod, classmethod**
-1. 
+### **五:staticmethod, classmethod** 
 
  ```python 
   class Kls(object):
@@ -68,13 +68,14 @@ tags: python
         print('Static:', arg)
 
     @classmethod
-    def cmethod(*arg):            ＃ 可以被类Kls直接调用，或者被*args调用，airgs实际上指的就是类Kls
+    def cmethod(*arg): ＃可以被类Kls直接调用，或者被*args调用，airgs实际上指的就是类Kls
         print('Class:', arg)
  ```
-2. 区别：；类内一般定义一个函数，需要被实例引用，函数参数有self，self即是指的实例。但是：
-  - staticmethod and classmethod 可以被自身类name (Kls)直接引用，可以通过类名Kls调用方法或者类内属性等
-  - staticmethod 参数不需要实例化的self，代表自身类的cls等;classmethod不需要self，但是需要cls(名字可以换)， 表示的是类的别名（ 即cls = Kls),可以通过类名Kls或者cls直接调用函数或者类内属性
 
-3. [**difference English**](http://www.wklken.me/posts/2013/12/22/difference-between-staticmethod-and-classmethod-in-python.html)
+1. 区别：；类内一般定义一个函数，需要被实例引用，函数参数有self，self即是指的实例。但是：
+ - staticmethod and classmethod 可以被自身类name (Kls)直接引用，可以通过类名Kls调用方法或者类内属性等
+ - staticmethod 参数不需要实例化的self，代表自身类的cls等;classmethod不需要self，但是需要cls(名字可以换)， 表示的是类的别名（ 即cls = Kls),可以通过类名Kls或者cls直接调用函数或者类内属性
+
+2. [**difference English**](http://www.wklken.me/posts/2013/12/22/difference-between-staticmethod-and-classmethod-in-python.html)
 
 
