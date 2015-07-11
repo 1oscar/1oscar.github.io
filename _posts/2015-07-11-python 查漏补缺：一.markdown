@@ -1,0 +1,80 @@
+---
+layout: post
+title: "python 查漏补缺：一"
+comments: true
+share: true
+tags: python
+---
+
+### **一： python 下划线`_ __ __xx__`**
+1. `_`单下划线开头：弱"内部使用"标识，表`property`如：`from M import *`，将不导入所有以下划线开头的对象，包括包、模块、成员
+2. 单下划线结尾`_`：只是为了避免与`python`关键字的命名冲突
+3. `__`双下划线开头：模块内的成员，表示私有成员，外部无法直接调用,同时可以避免你的方法被重载，举例：
+ 
+ ```python 
+   class A(object):
+    def __method(self):
+        print "I'm a method in A"
+    
+    def method(self):
+        return self.__method()
+ ```
+ 
+ ```python
+    class B(A):
+    def __method(self):
+        print "I'm a method in B"
+    
+    def method(self):
+        return self.__method()
+        # return self._A__method()
+        
+        
+    $python 1.py
+    out:  I'm a method in B
+    #out : I'm a method in A
+ ```
+ 如果想要输出 `I'm a method in B`,需要明确指出`_A__method()`
+4. `__`双下划线开头双下划线结尾`__`：指那些包含在用户无法控制的命名空间中的“魔术”对象或属性，如类成员的`__name__` 、`__doc__`、`__init__、__import__、__file__、`等。推荐永远不要将这样的命名方式应用于自己的变量或函数。这些方法也是不可调用的，这是python calls的方法。可以重写这些方法。[**special-method-names documentation** ](https://docs.python.org/2/reference/datamodel.html#special-method-names)
+
+### **二：Python3.x和Python2.x的区别** 
+1. [**博客园**](http://www.cnblogs.com/codingmylife/archive/2010/06/06/1752807.html)
+2. [**程序师**](http://www.techug.com/the-difference-of-python2-and-python3)
+
+### **三：时间复杂度**
+1. 判断一个元素是否在一组元素中存在`（if  ** in l:）`，使用`list(type(l) is  list)`的算法复杂度是`O(n)`，而使用`set(type(l) is set)`的算法复杂度是`O(1)`
+2. Python官方Wiki有一份专门[**数据结构操作的时间复杂度文档**](https://wiki.python.org/moin/TimeComplexity) 
+3. `list.sort()`内部采用的算法是timsort,时间复杂度：**平均：**`O(n log n)`,复杂度比较[**Wiki Timsort**](https://en.wikipedia.org/wiki/Timsort), Timsort [**source code**](http://svn.python.org/view/python/trunk/Objects/listobject.c?revision=69227&view=markup) [**source code text**](http://svn.python.org/view/python/trunk/Objects/listsort.txt?revision=69846&view=markup)
+
+### **四：单例模式**
+
+1. 继承类:   [**base class**](https://github.com/1oscar/blog_codes/blob/master/python%20%E6%9F%A5%E6%BC%8F%E8%A1%A5%E7%BC%BA:%E4%B8%80/test_baseclass.py) **Singleton class 需要重载__new__()，__new__()返回一个instance ,new class override Singleton class**
+2. 装饰器( 需要用到类装饰器,非函数装饰器，自动调用构造函数): [**decorate class**](https://github.com/1oscar/blog_codes/blob/master/python%20%E6%9F%A5%E6%BC%8F%E8%A1%A5%E7%BC%BA:%E4%B8%80/test_decorates.py) (**Singleton is defined  函数,使用装饰器时用class name 做参数**)
+3. metaclass:[**\_\_metaclass\_\_**](https://github.com/1oscar/blog_codes/blob/master/python%20%E6%9F%A5%E6%BC%8F%E8%A1%A5%E7%BC%BA:%E4%B8%80/test_metaclass.py)  (**Singleton 可调用，重载__call__**)
+
+### **五:staticmethod, classmethod**
+1. 
+
+ ```python 
+  class Kls(object):
+    def __init__(self, data):
+        self.data = data
+
+    def printd(self):              #printd 只能被实例调用
+        print(self.data)
+
+    @staticmethod                 #可以被类Kls之内调用
+    def smethod(*arg):
+        print('Static:', arg)
+
+    @classmethod
+    def cmethod(*arg):            ＃ 可以被类Kls直接调用，或者被*args调用，airgs实际上指的就是类Kls
+        print('Class:', arg)
+ ```
+2. 区别：；类内一般定义一个函数，需要被实例引用，函数参数有self，self即是指的实例。但是：
+  - staticmethod and classmethod 可以被自身类name (Kls)直接引用，可以通过类名Kls调用方法或者类内属性等
+  - staticmethod 参数不需要实例化的self，代表自身类的cls等;classmethod不需要self，但是需要cls(名字可以换)， 表示的是类的别名（ 即cls = Kls),可以通过类名Kls或者cls直接调用函数或者类内属性
+
+3. [**difference English**](http://www.wklken.me/posts/2013/12/22/difference-between-staticmethod-and-classmethod-in-python.html)
+
+
