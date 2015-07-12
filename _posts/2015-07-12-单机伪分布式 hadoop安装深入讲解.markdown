@@ -6,7 +6,7 @@ share: true
 tags: hadoop
 ---
 
-#### 环境:  `Mac OS X Yosemite 10.10; java version 1.8.0_45；hadoop 2.7.1;`
+##### 环境:  `Mac OS X Yosemite 10.10; java version 1.8.0_45；hadoop 2.7.1;`
 
 一：配置ssh环境
 
@@ -21,7 +21,7 @@ tags: hadoop
 1. `java -version`: 若没有安装java，mac下提示安装
 2. 系统安装版本: 
 
-   ```shell
+   ```powershell
    java version "1.8.0_45"
    Java(TM) SE Runtime Environment (build 1.8.0_45-b14)
    Java HotSpot(TM) 64-Bit Server VM (build 25.45-b02, mixed mode)
@@ -30,13 +30,13 @@ tags: hadoop
 三： 安装homebrew
 
 1. homebrew is OS X 下套件管理器
-2. ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+2. `ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
 3. 按回车键继续下一步
 4. `brew -version` 查看版本号: `Homebrew 0.9.5`
 
 四: 安装hadoop
 
-1. brew install hadoop
+1. `brew install hadoop`
 2. 我的系统版本： 2.7.1
 
 五: 修改配置
@@ -45,31 +45,34 @@ tags: hadoop
 
 2. `vi hadoop-env.sh` 修改为
    
-   ```
+   ```powershell
     export HADOOP_OPTS="$HADOOP_OPTS -Djava.net.preferIPv4Stack=true -Djava.security.krb5.realm= -Djava.security.krb5.kdc="
+   ```
+   
+   ```powershell
     export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_45.jdk/Contents/Home/"
    ```
 
 3. `vi core-site.xml`: 
    
-   ```
-     19 <configuration>
-     20      <property>
-     21         <name>hadoop.tmp.dir</name>
-     22         <value>/usr/local/Cellar/hadoop/hdfs/tmp</value>
-     23         <description>A base for other temporary directories.</description>
-     24     </property>
-     25     <property>
-     26         <name>fs.default.name</name>
-     27         <value>hdfs://localhost:9000</value>
-     28     </property>
-     29 </configuration>
+   ```powershell
+     <configuration>
+          <property>
+             <name>hadoop.tmp.dir</name>
+             <value>/usr/local/Cellar/hadoop/hdfs/tmp</value>
+             <description>A base for other temporary directories.</description>
+         </property>
+         <property>
+             <name>fs.default.name</name>
+             <value>hdfs://localhost:9000</value>
+         </property>
+     </configuration>
    ```
    注： fs.default.name 保存了NameNode的位置，HDFS和MapReduce组件都需要用到它，这就是它出现在core-site.xml 文件中而不是 hdfs-site.xml文件中的原因
 
 4. `vi hdfs-site.xml`
    
-   ```
+   ```powershell
        19 <configuration>
        20     <property>
        21         <name>dfs.replication</name>
@@ -81,7 +84,7 @@ tags: hadoop
 
 5. ` vi mapred-site.xml.template `
 
-   ```
+   ```powershell
     19 <configuration>
     20     <property>
     21         <name>mapreduce.framework.name</name>
@@ -93,14 +96,14 @@ tags: hadoop
  
 6. `vi yarn-site.xml  `
 
-   ```
+ ```powershell
     18 <configuration>
     19     <property>
     20         <name>yarn.nodemanager.aux-services</name>
     21         <value>mapreduce_shuffle</value>
     22     </property>
     23 </configuration>
-   ```
+ ```
 
 7. `cd /usr/local/Cellar/hadoop/2.6.0/bin`
 8. `hadoop namenode -format`  启动hadoop之前要先格式化 hdfs
