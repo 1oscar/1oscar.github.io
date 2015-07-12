@@ -6,7 +6,7 @@ share: true
 tags: hadoop
 ---
 
-### 环境:  `Mac OS X Yosemite 10.10; java version 1.8.0_45；hadoop 2.7.1;`
+#### 环境:  `Mac OS X Yosemite 10.10; java version 1.8.0_45；hadoop 2.7.1;`
 
 一：配置ssh环境
 
@@ -21,7 +21,7 @@ tags: hadoop
 1. `java -version`: 若没有安装java，mac下提示安装
 2. 系统安装版本: 
 
-   ```
+   ```shell
    java version "1.8.0_45"
    Java(TM) SE Runtime Environment (build 1.8.0_45-b14)
    Java HotSpot(TM) 64-Bit Server VM (build 25.45-b02, mixed mode)
@@ -42,10 +42,12 @@ tags: hadoop
 五: 修改配置
 
 1. `cd /usr/local/Cellar/hadoop/2.7.1/libexec/etc/hadoop`
+
 2. `vi hadoop-env.sh` 修改为
+   
    ```
-   export HADOOP_OPTS="$HADOOP_OPTS -Djava.net.preferIPv4Stack=true -Djava.security.krb5.realm= -Djava.security.krb5.kdc="
-   export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_45.jdk/Contents/Home/"
+    export HADOOP_OPTS="$HADOOP_OPTS -Djava.net.preferIPv4Stack=true -Djava.security.krb5.realm= -Djava.security.krb5.kdc="
+    export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_45.jdk/Contents/Home/"
    ```
 
 3. `vi core-site.xml`: 
@@ -63,7 +65,7 @@ tags: hadoop
      28     </property>
      29 </configuration>
    ```
-注： fs.default.name 保存了NameNode的位置，HDFS和MapReduce组件都需要用到它，这就是它出现在core-site.xml 文件中而不是 hdfs-site.xml文件中的原因
+   注： fs.default.name 保存了NameNode的位置，HDFS和MapReduce组件都需要用到它，这就是它出现在core-site.xml 文件中而不是 hdfs-site.xml文件中的原因
 
 4. `vi hdfs-site.xml`
    
@@ -75,19 +77,19 @@ tags: hadoop
        23     </property>
        24 </configuration>
    ```
- 变量dfs.replication指定了每个HDFS数据库的复制次数。 通常为3, 由于我们只有一台主机和一个伪分布式模式的DataNode，将此值修改为1。  
+   变量dfs.replication指定了每个HDFS数据库的复制次数。 通常为3, 由于我们只有一台主机和一个伪分布式模式的DataNode，将此值修改为1。  
 
 5. ` vi mapred-site.xml.template `
 
- ```
-  19 <configuration>
-  20     <property>
-  21         <name>mapreduce.framework.name</name>
-  22         <value>yarn</value>
-  23     </property>
-  24 </configuration>
- ```
- 变量mapred.job.tracker 保存了JobTracker的位置，因为只有MapReduce组件需要知道这个位置，所以它出现在mapred-site.xml文件中。
+   ```
+    19 <configuration>
+    20     <property>
+    21         <name>mapreduce.framework.name</name>
+    22         <value>yarn</value>
+    23     </property>
+    24 </configuration>
+   ```
+   变量mapred.job.tracker 保存了JobTracker的位置，因为只有MapReduce组件需要知道这个位置，所以它出现在mapred-site.xml文件中。
  
 6. `vi yarn-site.xml  `
 
