@@ -43,9 +43,10 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.45-b02, mixed mode)
 
 1. `cd /usr/local/Cellar/hadoop/2.7.1/libexec/etc/hadoop`
 2. `vi hadoop-env.sh` 修改为
-
-`export HADOOP\_OPTS="$HADOOP\_OPTS -Djava.net.preferIPv4Stack=true -Djava.security.krb5.realm= -Djava.security.krb5.kdc="`
-`export JAVA\_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0\_45.jdk/Contents/Home/"`
+   ```shell
+   export HADOOP_OPTS="$HADOOP_OPTS -Djava.net.preferIPv4Stack=true -Djava.security.krb5.realm= -Djava.security.krb5.kdc="
+   export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_45.jdk/Contents/Home/"
+   ```
 
 3. `vi core-site.xml`: 
    
