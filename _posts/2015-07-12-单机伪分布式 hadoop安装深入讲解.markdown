@@ -3,12 +3,13 @@ layout: post
 title: "单机伪分布式 hadoop安装深入讲解"
 comments: true
 share: true
-tags: python
+tags: hadoop
 ---
 
-### 环境:  Mac OS X Yosemite 10.10; java version "1.8.0_45"；hadoop 2.7.1;
+### 环境:  Mac OS X Yosemite 10.10; java version "1.8.0\_45"；hadoop 2.7.1;
 
 一：配置ssh环境
+
 1. `ssh localhost`: 提示无权限
 2. 系统偏好设置－》共享－》远程登录－》所有用户
 3. `ssh localhost` Ok ,but 每次输入密码麻烦
@@ -27,21 +28,25 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.45-b02, mixed mode)
 ```
 
 三： 安装homebrew
+
 1. homebrew is OS X 下套件管理器
 2. `ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
 3. 按回车键继续下一步
 4. `brew -version` 查看版本号: `Homebrew 0.9.5`
 
 四: 安装hadoop
+
 1. brew install hadoop
 2. 我的系统版本： 2.7.1
 
 五: 修改配置
+
 1. `cd /usr/local/Cellar/hadoop/2.7.1/libexec/etc/hadoop`
 2. `vi hadoop-env.sh` 修改为
 
-`export HADOOP_OPTS="$HADOOP_OPTS -Djava.net.preferIPv4Stack=true -Djava.security.krb5.realm= -Djava.security.krb5.kdc="`
-`export JAVA_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0_45.jdk/Contents/Home/"`
+`export HADOOP\_OPTS="$HADOOP\_OPTS -Djava.net.preferIPv4Stack=true -Djava.security.krb5.realm= -Djava.security.krb5.kdc="`
+`export JAVA\_HOME="/Library/Java/JavaVirtualMachines/jdk1.8.0\_45.jdk/Contents/Home/"`
+
 3. `vi core-site.xml`: 
    
    ```shell
@@ -58,6 +63,7 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.45-b02, mixed mode)
      29 </configuration>
    ```
 注： fs.default.name 保存了NameNode的位置，HDFS和MapReduce组件都需要用到它，这就是它出现在core-site.xml 文件中而不是 hdfs-site.xml文件中的原因
+
 4. `vi hdfs-site.xml`
    
    ```shell
@@ -69,6 +75,7 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.45-b02, mixed mode)
        24 </configuration>
    ```
  变量dfs.replication指定了每个HDFS数据库的复制次数。 通常为3, 由于我们只有一台主机和一个伪分布式模式的DataNode，将此值修改为1。  
+
 5. ` vi mapred-site.xml.template `
 
  ```shell
@@ -96,6 +103,7 @@ Java HotSpot(TM) 64-Bit Server VM (build 25.45-b02, mixed mode)
 8. `hadoop namenode -format`  启动hadoop之前要先格式化 hdfs
 
 六： `cd /usr/local/Cellar/hadoop/2.6.0/sbin`
+
 1. `start-dfs.sh  ` : 启动NameNode daemon and DataNode daemon
    出现一个 警告：WARN
  util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable 这对Hadoop的运行没有影响,警告 是关于 Hadoop 本地库的， Hadoop本地库是为了提高效率或者某些不能用Java实现的功能组件库。其解决方法是 [Mac
