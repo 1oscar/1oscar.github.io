@@ -6,7 +6,7 @@ share: true
 tags: hadoop
 ---
 
-### 环境:  Mac OS X Yosemite 10.10; java version "1.8.0\_45"；hadoop 2.7.1;
+### 环境:  `Mac OS X Yosemite 10.10; java version 1.8.0_45；hadoop 2.7.1;`
 
 一：配置ssh环境
 
