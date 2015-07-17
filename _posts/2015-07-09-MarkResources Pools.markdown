@@ -6,7 +6,34 @@ share: true
 tags: python
 ---
 
-## 一: 爬虫相关
+## 一: module pools-加速开发技术
+
+### 简化日期计算模块
+
+[**dateutil**](http://labix.org/python-dateutil) 
+`pip install python-dateutil==1.5`
+
+### 图像处理模块 
+[**PIL**](http://www.pythonware.com/products/pil/)
+**JPEG;PNG;GIF;BMP**
+`sudo pip install python-imaging`
+
+### 数据的加密处理模块
+
+[**pycrypto**](https://www.dlitz.net/software/pycrypto)
+`pip install pycrypto`
+
+### 调用twitter的API
+[**tweepy**](http://tweepy.github.com/)
+`pip install tweepy`
+
+
+
+
+
+
+
+## 二: 爬虫相关
 
 ### mechanize
 **与web服务器交互复杂,如get，post等，使用 mechanize（模拟登陆);BeautifulSoup提取数据** 
