@@ -8,7 +8,7 @@ tags: hadoop
 
 ### Introduce
 
-    Hive是Hadoop一个程序接口,使用了类SQL的语法,可以将其视为一个SQL语言的解释器，它能将DBA提交的SQL语句，转换成能够在HADOOP上执行的M-R作业,对于DBA或前端用户来说，不必再将精力花在编写M-R应用上，直接借助SQL的易用性来实现大规模数据的查询和分析。
+Hive是Hadoop一个程序接口,使用了类SQL的语法,可以将其视为一个SQL语言的解释器，它能将DBA提交的SQL语句，转换成能够在HADOOP上执行的M-R作业,对于DBA或前端用户来说，不必再将精力花在编写M-R应用上，直接借助SQL的易用性来实现大规模数据的查询和分析。
 
 ### Inatll tutorial
 
