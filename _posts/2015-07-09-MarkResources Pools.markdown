@@ -27,6 +27,9 @@ tags: python
 [**tweepy**](http://tweepy.github.com/)
 `pip install tweepy`
 
+### sina weibo API client
+[**sinaweibopy**](http://github.liaoxuefeng.com/sinaweibopy/)
+
 
 
 
