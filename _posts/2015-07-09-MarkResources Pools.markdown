@@ -30,6 +30,17 @@ tags: python
 ### sina weibo API client
 [**sinaweibopy**](http://github.liaoxuefeng.com/sinaweibopy/)
 
+### Envelopes发送邮件和附件
+[**Envelopes官网**](https://tomekwojcik.github.io/envelopes/)
+[**参考**](http://www.zhidaow.com/post/python-envelopes)
+
+### smtplib发送邮件
+[**smtplib参考**](http://www.zhidaow.com/post/python-send-email-with-smtplib)
+
+### threadpool线程池
+[**安装包pypi**](https://pypi.python.org/pypi/threadpool)
+[**参考1**](http://gashero.yeax.com/?p=44)
+[**参考2**](http://www.zhidaow.com/post/python-threadpool)
 
 
 
