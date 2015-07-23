@@ -72,3 +72,9 @@ tags: python
 ### 爬虫框架
 
 1. [**海量数据爬虫框架搭建**](http://blog.jobbole.com/46673/)
+
+## 技术文章
+
+[**线程池**](http://www.the5fire.com/python-thread-pool.html)
+[**IBM线程池**](http://www.ibm.com/developerworks/cn/java/l-threadPool/)
+
