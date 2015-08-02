@@ -78,3 +78,6 @@ tags: python
 [**线程池**](http://www.the5fire.com/python-thread-pool.html)
 [**IBM线程池**](http://www.ibm.com/developerworks/cn/java/l-threadPool/)
 
+### 工具
+
+1. [**查询ip，dns，手机号码**](www.ip.cn)
