@@ -1,0 +1,190 @@
+---
+layout: post
+title:  "爬虫总结－查漏补缺"
+comments: true
+share: true
+tags: 爬虫; python
+---
+
+### 介绍
+
+要想从一个网站获取数据有三种途径：它们提供专门的API接口，可以调取；或者提供XML文件类似于google reader订阅之类；再么就是通过网络蜘蛛爬取页面信息了
+
+### re
+
+1. 只匹配中文： [\x80-\xff]+或者 [u4e00-u9fa5]＋
+2. re.S是任意匹配模式，也就是.可以匹配换行符
+
+### urllib2 get post
+
+    post 请求：
+     post_data = {'a': '1', 'b': '2'}
+     postdata =urlilb.urlencode(post_data)
+     headers = {}
+     req = urlib2.Request(url, data=postdata, headers = headers)
+     page = urllib2.urlopen(req).read()
+
+**不发送postdata就是get请求**
+
+#### **build_opener(), install_opener()**
+
+一. `urllib2.urlopen()`会打开全局的开启器`opener`, `build_opener()`定义开启器`opener`,    `install_opener()`把`opener`设置为全局开启器，.
+
+二. 不使用`install_opener()`来定义全局`opener`,但是要使用自定义的全局`opener`,`opener`直接使用`build_opener()`定义的`opener`,`page = opener.open(url).read()`即可。定义`build_opener`全局`opener`,不实用`install_opener()`设置全局，则`urllib2.urlopen()`会使用默认`opener`,不是`build_opener`定义的这个。
+
+三. **headers两种使用方式**
+
+    headers = {'a': '1', 'b': '2'}
+    urllib2.Request(url, headers = headers)
+
+或者:
+
+    req = urllbi2.Request(url)
+    req.add_head('a', '1')
+
+四： **cookie的处理**
+
+    improt cookielib
+    cookie = cookielib.CookieJar()
+    opener = urllib2.build_opener(urllib2.HTTPCookieProcessor(cookie))
+    
+五: **解压缩服务器返回的内容的处理**
+
+    import zlib
+    page = zlib.decompress(page, 16+zlib.MAX_WBITS)
+
+或者:python的urllib/urllib2默认都不支持压缩，要返回压缩格式，必须在request的header里面写明’accept-encoding’，然后读取response后更要检查header查看是否有’content-encoding’一项来判断是否需要解码
+
+    import urllib2
+    from gzip import GzipFile
+    from StringIO import StringIO
+    class ContentEncodingProcessor(urllib2.BaseHandler):
+      """A handler to add gzip capabilities to urllib2 requests """
+     
+      # add headers to requests
+      def http_request(self, req):
+        req.add_header("Accept-Encoding", "gzip, deflate")
+        return req
+     
+      # decode
+      def http_response(self, req, resp):
+        old_resp = resp
+        # gzip
+        if resp.headers.get("content-encoding") == "gzip":
+            gz = GzipFile(
+                        fileobj=StringIO(resp.read()),
+                        mode="r"
+                      )
+            resp = urllib2.addinfourl(gz, old_resp.headers, old_resp.url, old_resp.code)
+            resp.msg = old_resp.msg
+        # deflate
+        if resp.headers.get("content-encoding") == "deflate":
+            gz = StringIO( deflate(resp.read()) )
+            resp = urllib2.addinfourl(gz, old_resp.headers, old_resp.url, old_resp.code)  # 'class to add info() and
+            resp.msg = old_resp.msg
+        return resp
+     
+    # deflate support
+    import zlib
+    def deflate(data):   # zlib only provides the zlib compress format, not the deflate format;
+      try:               # so on top of all there's this workaround:
+        return zlib.decompress(data, -zlib.MAX_WBITS)
+      except zlib.error:
+        return zlib.decompress(data)
+
+然后就简单了，
+
+    encoding_support = ContentEncodingProcessor
+    opener = urllib2.build_opener( encoding_support, urllib2.HTTPHandler )
+     
+    #直接用opener打开网页，如果服务器支持gzip/defalte则自动解压缩
+    content = opener.open(url).read()
+
+六：**build_opener()使用handlers,所有繁重的工作交给handlers**
+
+    print dir(urllib2.build_opener)
+     build_opener(*handlers)
+    Create an opener object from a list of handlers.
+    
+六.1 **代理设置**
+
+    proxy_handler = urllib2.ProxyHandler({'http': 'url:**'})
+    opener = urllib2.build_opener(pxory_handler)
+    
+七: 设置失败后自动重试
+
+    def get(self,req,retries=3):
+            try:
+                response = self.opener.open(req)
+                data = response.read()
+            except Exception , what:
+                print what,req
+                if retries>0:
+                    return self.get(req,retries-1)
+                else:
+                    print 'GET Failed',req
+                    return ''
+            return data
+
+八: 并行任务，多进程
+
+    from multiprocessing.dumpy import Pool as ThreadPool
+    ...
+    pool = ThreadPool(4) #限定线程池中worker的数量,抓取函数
+    results = pool.map(urllib2.urlopen, urls_list)
+    pool.close()
+    pool.join()
+
+**为什么是4个？这是电脑上核数的两倍。实验不同大小的进程池时，发现这是最佳的大小。小于8个使脚本跑的太慢，多于8个也不会让它更快。**
+**参考:**[并行任务技巧](http://www.jinglingshu.org/?p=6357)
+
+九. **补充**
+
+I. `urllib2.urlopen(url, timeout=100)`: 
+设置抓取超时参数设置
+
+II. `urllib2`只支持`http`的`get`,`post`方法，若要使用`put`, `delete`方法,则
+
+    req = urllib2.Request(url, data)
+    req.get_method = lambda: 'put'
+    page = urllib2.urlopen(req).read()
+    
+III. 以上都不能抓到页面的时候，用selenium直接控制浏览器访问
+     
+IV. JSONP跨域的原理解析 
+简述原理与过程：首先在客户端注册一个callback, 然后把callback的名字传给服务器。此时，服务器先生成 json 数据。 然后以 javascript 语法的方式，生成一个function , function 名字就是传递上来的参数 jsonp。最后将 json 数据直接以入参的方式，放置到 function 中，这样就生成了一段 js 语法的文档，返回给客户端。
+
+客户端浏览器，解析script标签，并执行返回的 javascript 文档，此时数据作为参数，传入到了客户端预先定义好的 callback 函数里。（动态执行回调函数）
+
+V: **javascript 动态页面的抓取 scrapy**
+http://www.hopez.org/blog/9/1396371345
+
+
+技术文章:
+[爬虫技巧](http://www.pythonclub.org/python-network-application/observer-spider)
+[pytesser模块实现图片文字识别](http://www.jinglingshu.org/?p=9281)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
