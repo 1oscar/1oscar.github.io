@@ -3,7 +3,7 @@ layout: post
 title:  "爬虫总结－查漏补缺"
 comments: true
 share: true
-tags: 爬虫; python
+tags: 爬虫 python
 ---
 
 ### 介绍
