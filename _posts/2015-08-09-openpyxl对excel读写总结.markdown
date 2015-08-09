@@ -57,5 +57,6 @@ tags: python excel
 三: 其他excel读写
 ** xlrd、xlwt**
 
-推荐文章: (openpyxl官网)[http://openpyxl.readthedocs.org/]
-(未用到的特性)[https://automatetheboringstuff.com/chapter12/]
+推荐文章: [**openpyxl官网**](http://openpyxl.readthedocs.org/)
+
+[**未用到的特性**](https://automatetheboringstuff.com/chapter12/)
