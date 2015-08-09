@@ -60,6 +60,10 @@ tags: python
 1.  [**proxy tools**](https://github.com/the5fire/practice_demo/blob/master/tools/urllib_proxy.py)
 2. [**httplib**](https://docs.python.org/2/library/httplib.html)
 3. 低成本的获取IP池，这是一个难点
+4. [foreigin proxy pools](http://proxy-list.org/english/index.php)
+5. [proxy pools](http://cn-proxy.com/)
+6. [global pools](http://cn-proxy.com/archives/218)
+7. **code见evernote**
 
 ### cookie handle
 
@@ -69,9 +73,12 @@ tags: python
     br.set_cookiejar(cj)
 ```
 
+
+
 ### 爬虫框架
 
 1. [**海量数据爬虫框架搭建**](http://blog.jobbole.com/46673/)
+2. [**tecent SuperSpider**](http://security.tencent.com/index.php/blog/msg/34)
 
 ## 技术文章
 
