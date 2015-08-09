@@ -18,10 +18,9 @@ tags: python excel
 		for col in rows[0]:       #遍历第一行的所有列
 			col_num += 1
 			ws_gather.cell(row=1,column=col_num).value = col.value    #将表第一行表头内容写入ws_gather，ws_gather是新建的表格
-			
 
 		i_row = 1
-		for ele_sheet in sheet_name_list:  遍历所有表格
+		for ele_sheet in sheet_name_list:  #遍历所有表格
 			rows = wb.get_sheet_by_name(ele_sheet).rows  # 表格所有行内容列表
 			
 			for row in rows[1:]:
@@ -55,8 +54,11 @@ tags: python excel
 ```
 
 三: 其他excel读写
-** xlrd、xlwt**
 
-推荐文章: [**openpyxl官网**](http://openpyxl.readthedocs.org/)
+**xlrd、xlwt**
+
+推荐文章: 
+
+[**openpyxl官网**](http://openpyxl.readthedocs.org/)
 
 [**未用到的特性**](https://automatetheboringstuff.com/chapter12/)
