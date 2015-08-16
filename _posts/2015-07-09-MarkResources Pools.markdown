@@ -45,6 +45,9 @@ tags: python
 ## 汉子转拼音库
 [**汉子转拼音**](https://github.com/cleverdeng/pinyin.py)
 
+## python 打包软件
+[**https://github.com/pyinstaller/pyinstaller**](https://github.com/pyinstaller/pyinstaller)
+
 
 
 
