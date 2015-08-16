@@ -42,6 +42,9 @@ tags: python
 [**参考1**](http://gashero.yeax.com/?p=44)
 [**参考2**](http://www.zhidaow.com/post/python-threadpool)
 
+## 汉子转拼音库
+[**汉子转拼音**](https://github.com/cleverdeng/pinyin.py)
+
 
 
 
