@@ -48,6 +48,9 @@ tags: python
 ## python 打包软件
 [**https://github.com/pyinstaller/pyinstaller**](https://github.com/pyinstaller/pyinstaller)
 
+# python timezone
+[**pytz**](https://pypi.python.org/pypi/pytz/)
+
 
 
 
