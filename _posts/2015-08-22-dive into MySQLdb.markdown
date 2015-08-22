@@ -112,10 +112,10 @@ con.connect的参数设置:**
     integer, non-zero enables LOAD LOCAL INFILE; zero disables
 
 **备注:** <br>
- 1. **MySQLdb的其余操作参见我的pdf文档**
- 2. **有价值的article:**
-     - [**MySQLdb用户指南,MySQLdb源码函数的介绍**](http://mysql-python.sourceforge.net/MySQLdb.html)
-     - [**Innodb中文手册,介绍Innodb引擎的数据库的不一样的操作**](http://man.chinaunix.net/database/mysql/inonodb_zh/)
+ 1. **MySQLdb的其余操作参见我的pdf文档**<br>
+ 2. **有价值的article:**<br>
+     - [**MySQLdb用户指南,MySQLdb源码函数的介绍**](http://mysql-python.sourceforge.net/MySQLdb.html)<br>
+     - [**Innodb中文手册,介绍Innodb引擎的数据库的不一样的操作**](http://man.chinaunix.net/database/mysql/inonodb_zh/)<br>
      - [**MySQL中文手册，介绍了所有sql语句操作**](http://man.chinaunix.net/database/mysql/zh-4.1.0/)
 
  
