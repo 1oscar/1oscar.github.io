@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "threading socket  "
+title: "Mark threading socket  "
 comments: true
 share: true
 tags: python
