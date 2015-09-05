@@ -42,6 +42,15 @@ tags: python
 [**参考1**](http://gashero.yeax.com/?p=44)
 [**参考2**](http://www.zhidaow.com/post/python-threadpool)
 
+## 汉子转拼音库
+[**汉子转拼音**](https://github.com/cleverdeng/pinyin.py)
+
+## python 打包软件
+[**https://github.com/pyinstaller/pyinstaller**](https://github.com/pyinstaller/pyinstaller)
+
+# python timezone
+[**pytz**](https://pypi.python.org/pypi/pytz/)
+
 
 
 
@@ -60,6 +69,11 @@ tags: python
 1.  [**proxy tools**](https://github.com/the5fire/practice_demo/blob/master/tools/urllib_proxy.py)
 2. [**httplib**](https://docs.python.org/2/library/httplib.html)
 3. 低成本的获取IP池，这是一个难点
+4. [foreigin proxy pools](http://proxy-list.org/english/index.php)
+5. [proxy pools](http://cn-proxy.com/)
+6. [global pools](http://cn-proxy.com/archives/218)
+7. [proxy spider](http://pachong.org/)
+8. **code见evernote**
 
 ### cookie handle
 
@@ -69,9 +83,12 @@ tags: python
     br.set_cookiejar(cj)
 ```
 
+
+
 ### 爬虫框架
 
 1. [**海量数据爬虫框架搭建**](http://blog.jobbole.com/46673/)
+2. [**tecent SuperSpider**](http://security.tencent.com/index.php/blog/msg/34)
 
 ## 技术文章
 
