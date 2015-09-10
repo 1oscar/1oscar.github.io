@@ -48,8 +48,26 @@ tags: python
 ## python 打包软件
 [**https://github.com/pyinstaller/pyinstaller**](https://github.com/pyinstaller/pyinstaller)
 
-# python timezone
+## python timezone
 [**pytz**](https://pypi.python.org/pypi/pytz/)
+
+```python
+
+from datetime import datetime
+import pytz
+tz = pytz.timezone('Asia/Shanghai')
+t = datetime.now(tz)
+cst_time = tz.fromutc(datetime.utcfromtimestamp(time.time())).strftime('%Y-%m-%d-%H-%M')
+
+```
+## commands
+
+```python
+
+commands.getstatusooutput('ls')
+
+```
+
 
 
 
