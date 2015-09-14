@@ -68,6 +68,20 @@ commands.getstatusooutput('ls')
 
 ```
 
+## ConfigParser
+
+config.ini
+
+```python
+
+[mydb]
+host = 
+port  = 
+user = 
+password = 
+
+```
+
 
 
 
