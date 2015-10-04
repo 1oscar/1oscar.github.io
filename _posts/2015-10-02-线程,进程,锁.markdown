@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "线程,进程，锁"
+title: "线程,进程,锁"
 comments: true
 share: true
 tags: python
@@ -28,6 +28,9 @@ tags: python
 2.1 threading
 2.1.1 继承threading.Thread类
 
+
+```python
+
     import time
     import threading
     
@@ -51,7 +54,10 @@ tags: python
     if __name__ == '__main__':
         main()
         
+```
 结果:
+
+```python
 
     Start main threading
     thread Thread-1, @number: 0
@@ -84,7 +90,10 @@ tags: python
         print "End Main threading"
     if __name__ == '__main__':
         main()
+```
 结果:
+
+```python
 
     Start main threading
     thread Thread-1, @number: 0
@@ -114,7 +123,10 @@ tags: python
         print "End Main threading"
     if __name__ == '__main__':
         main()
+```
 结果:
+
+```python
 
     Start main threading
     thread Thread-1, @number: 0
@@ -154,6 +166,7 @@ tags: python
         print "End Main threading"
     if __name__ == '__main__':
         main()
+```
 
 结果:
 
@@ -168,6 +181,8 @@ tags: python
     [Finished in 6.1s]
 
 Queue模块已经设置了对锁的操作，如果queue的为空，则get元素的时候会被阻塞，知道队列里面被其他线程写入数据:
+
+```python
 
     import Queue
     import threading
@@ -197,6 +212,7 @@ Queue模块已经设置了对锁的操作，如果queue的为空，则get元素�
         for t in threads:
             t.join()  
     main()
+```
 结果:
 
     thread Thread-1, host http://yahoo.com
@@ -208,6 +224,8 @@ Queue模块已经设置了对锁的操作，如果queue的为空，则get元素�
 queue.task_done()主要是发送队列中某个任务结束信号
 
 2.1.2 使用threading.Thread对象
+
+```python
 
     def func(num):
         sum = 0
@@ -223,6 +241,7 @@ queue.task_done()主要是发送队列中某个任务结束信号
         for t in threads:
             t.join()
     main()
+```
 
     结果:
     55 
@@ -233,6 +252,8 @@ queue.task_done()主要是发送队列中某个任务结束信号
     [Finished in 0.1s]
 
 2.2 multiprocessing
+
+```python
 
     import multiprocessing
     import time
@@ -255,6 +276,7 @@ queue.task_done()主要是发送队列中某个任务结束信号
             print res.get()
         print "Sub-process(es) done."
         
+```
 所有任务都执行完之后一定要记得用close()和join()回收进程.
 
 
