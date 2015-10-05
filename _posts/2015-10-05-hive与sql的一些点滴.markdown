@@ -12,11 +12,17 @@ Hive可以将结构化的数据文件映射为一张数据库表，并提供完�
 I1. **顺序**
 
 SQL的执行顺序：
+
  - 第一步：执行FROM
+
  - 第二步：WHERE条件过滤
+
  - 第三步：GROUP BY分组
+
  - 第四步：执行SELECT投影列
+
  - 第五步：HAVING条件过滤
+
  - 第六步：执行ORDER BY 排序
 
 I2. **sql常用操作:**
@@ -81,18 +87,18 @@ round(21.263,2),返回21.26
 abs(double a)绝对值
 from_unixtime(tmsp): 返回当前时区的时间YYYY- MM – DD HH：MM：SS
 unix_timestamp():如果不带参数的调用，返回一个Unix时间戳（从’1970- 01 – 0100:00:00′到现在的UTC秒数）为无符号整数
-unix\_timestamp(string date): 指定日期参数调用UNIX_TIMESTAMP（），它返回参数值’1970- 01 – 0100:00:00′到指定日期的秒数。
+unix_timestamp(string date): 指定日期参数调用UNIX_TIMESTAMP（），它返回参数值’1970- 01 – 0100:00:00′到指定日期的秒数。
 date(timesp): 将时间戳转换为年-月-日
-to\_date(string timestamp): 返回时间中的年月日： to_date(“1970-01-01 00:00:00″) = “1970-01-01″
+to_date(string timestamp): 返回时间中的年月日： to_date(“1970-01-01 00:00:00″) = “1970-01-01″
 year(string date),month(string date),day(string date)等
 length(string A): 返回字符串的长度
 reverse(string A): 返回倒序字符串
 concat(string A, string B…):连接多个字符串，合并为一个字符串
 lower(string A): 小写
 upper(string A): 大写
-get\_json\_object(string json_string, string path): 处理json数据
-regexp\_extract(string subject, string pattern, int index): 通过下标返回正则表达式指定的部分。regexp_extract(‘foothebar’, ‘foo(.*?)(bar)’, 2) returns ‘bar.’
-parse\_url(string urlString, string partToExtract [, string keyToExtract]):返回URL指定的部分。parse\_url(‘http://facebook.com/path1/p.php?k1=v1&k2=v2#Ref1′, ‘HOST’) 返回：’facebook.com’
+get_json_object(string json_string, string path): 处理json数据
+regexp_extract(string subject, string pattern, int index): 通过下标返回正则表达式指定的部分。regexp_extract(‘foothebar’, ‘foo(.*?)(bar)’, 2) returns ‘bar.’
+parse_url(string urlString, string partToExtract [, string keyToExtract]):返回URL指定的部分。parse_url(‘http://facebook.com/path1/p.php?k1=v1&k2=v2#Ref1′, ‘HOST’) 返回：’facebook.com’
 A IN (val1, val2, ...)
 A NOT IN (val1, val2, ...)
 ```
