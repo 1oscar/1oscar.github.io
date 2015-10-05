@@ -3,69 +3,79 @@ layout: post
 title: "hive与sql的一些点滴" 
 comments: true
 share: true
-tags: 
+tags: hadoop
 ---
 
-hive:
-Hive可以将结构化的数据文件映射为一张数据库表，并提供完整的SQL查询功能，可以将SQL语句转换为MapReduce任务进行运行，通过自己的SQL去查询分析需要的内容，这套SQL 简称Hive SQL.而mapreduce开发人员可以把己写的mapper 和reducer 作为插件来支持Hive 做更复杂的数据分析。
+**hive:
+Hive可以将结构化的数据文件映射为一张数据库表，并提供完整的SQL查询功能，可以将SQL语句转换为MapReduce任务进行运行，通过自己的SQL去查询分析需要的内容，这套SQL 简称Hive SQL.而mapreduce开发人员可以把己写的mapper 和reducer 作为插件来支持Hive 做更复杂的数据分析。**
 
-1. **顺序**
+I1. **顺序**
+
 SQL的执行顺序：
-–第一步：执行FROM
-–第二步：WHERE条件过滤
-–第三步：GROUP BY分组
-–第四步：执行SELECT投影列
-–第五步：HAVING条件过滤
-–第六步：执行ORDER BY 排序
+ - 第一步：执行FROM
+ - 第二步：WHERE条件过滤
+ - 第三步：GROUP BY分组
+ - 第四步：执行SELECT投影列
+ - 第五步：HAVING条件过滤
+ - 第六步：执行ORDER BY 排序
 
-2. sql常用操作:
+I2. **sql常用操作:**
 
- `DISTINCT`即去重
- `as` : 定义别名
- `having:` 
-查询平均年龄在20岁以上的班级:
+`DISTINCT`即去重.
+`as` : 定义别名.
+`having:`查询平均年龄在20岁以上的班级
 
 ```sql
 SELECT student_class, AVG(student_age) FROM t_student WHERE AVG(student_age)>20 GROUP BY student_class;
 ```
-错误,(聚合函数在`WHERE`之后执行，所以这里在WHERE判断条件里加入聚合函数是做不到的),下面正确
+**错误,(聚合函数在`WHERE`之后执行，所以这里在WHERE判断条件里加入聚合函数是做不到的),下面sql是正确**
 
 ```sql
 SELECT student_class,AVG(student_age) AS 平均年龄 FROM t_student GROUP BY (student_class) HAVING
 AVG(student_age)>20;
 ```
 
-通配符过滤用like 
-单字符通配符‘_' 
-多字符通配符‘%' 
-A LIKE B     模糊匹配
-A RLIKE B     正则表达式匹配
+**通配符过滤用like
+单字符通配符‘_'
+多字符通配符‘%'**
+
+A LIKE B     **模糊匹配**
+A RLIKE B     **正则表达式匹配**
 
 ```sql
 select * from T_Employee where FName like '_erry'
 ```
 
+```sql
 WHERE column_name BETWEEN value1 AND value2 
 操作符 BETWEEN ... AND 会选取介于两个值之间的数据范围。这些值可以是数值、文本或者日期。
+```
 
-`group by`: 分组,只能针对某一个列或者某个列的聚合函数
-`having`: 针对聚合函数分组的过滤(多行),`where`针对每一行的过滤
-`group by` 多个字段,`group by name,number`，我们可以把`name`和`number` 看成一个整体字段，以他们整体来进行分组的
+ - `group by`: 分组,只能针对某一个列或者某个列的聚合函数
 
-判断是否null, `is null`
+ - `having`: 针对聚合函数分组的过滤(多行),`where`针对每一行的过滤
 
-3.sql聚合函数汇总
+ - `group by` 多个字段,`group by name,number`，我们可以把`name`和`number` 看成一个整体字段，以他们整体来进行分组的
 
-count():求满足条件的记录数(COUNT()函数会忽略指定列的值为空的行，但如果 COUNT()函数中用的是星号（*），则不忽略)
-max():求最大值
-min():求最小值
-sum():求和  只能对数值进行计算不能运用于日期和字符串
-avg():求平均值
+ - 判断是否null,  `where field is null`
 
-4. hive内置函数
+I3.**sql聚合函数汇总**
+
+ - count():求满足条件的记录数(COUNT()函数会忽略指定列的值为空的行，但如果 COUNT()函数中用的是星号（*），则不忽略)
+
+ - max():求最大值
+
+ - min():求最小值
+
+ - sum():求和  只能对数值进行计算不能运用于日期和字符串
+
+ - avg():求平均值
+
+I4. **hive内置函数**
 
 [**hive内置函数**](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF)
 
+```sql
 floor(21.2),返回21
 round(21.263,2),返回21.26
 abs(double a)绝对值
@@ -85,9 +95,10 @@ regexp\_extract(string subject, string pattern, int index): 通过下标返回�
 parse\_url(string urlString, string partToExtract [, string keyToExtract]):返回URL指定的部分。parse\_url(‘http://facebook.com/path1/p.php?k1=v1&k2=v2#Ref1′, ‘HOST’) 返回：’facebook.com’
 A IN (val1, val2, ...)
 A NOT IN (val1, val2, ...)
-
 ```
 
+
+```sql
 json_tuple():Takes a set of names (keys) and a JSON string, and returns a tuple of values. This is a more efficient version of the get_json_object UDF because it can get multiple keys with just one call.
 
 example:
@@ -97,13 +108,10 @@ select a.timestamp, get_json_object(a.appevents, '$.eventid'), get_json_object(a
 
 select a.timestamp, b.*
 from log a lateral view json_tuple(a.appevent, 'eventid', 'eventname') b as f1, f2;
-
 ```
 
-```
-
+```sql
 parse_url_tuple比parser_url更高效
-
 数据:
 url1 http://facebook.com/path1/p.php?k1=v1&k2=v2#Ref1
 url2 https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-getjsonobject
@@ -117,30 +125,39 @@ url2 cwiki.apache.org /confluence/display/Hive/LanguageManual+UDF NULL NULL
 ```
 
 
-5. hive聚合函数
-包括了sql的聚合函数
-var_pop(col): 返回指定列的方差
-var_samp(col): 返回指定列的样本方差
-还有偏差，协方差，相关系数等
+I5. **hive聚合函数**
 
-6. hive常用命令
+ - 包括了sql的聚合函数
 
-[**hive常用交互命令官方**](https://cwiki.apache.org/confluence/display/Hive/GettingStarted)
-[**hive官方手册命令中文**](http://slaytanic.blog.51cto.com/2057708/939950)
-[**复合数据结构与一些函数用法**](http://my.oschina.net/leejun2005/blog/120463#OSC_h3_9)
+ - var_pop(col): 返回指定列的方差
+
+ - var_samp(col): 返回指定列的样本方差
+
+ - 还有偏差，协方差，相关系数等
+
+I6. **hive常用命令**
+
+ - [**hive常用交互命令官方**](https://cwiki.apache.org/confluence/display/Hive/GettingStarted)
+
+ - [**hive官方手册命令中文**](http://slaytanic.blog.51cto.com/2057708/939950)
+
+ - [**复合数据结构与一些函数用法**](http://my.oschina.net/leejun2005/blog/120463#OSC_h3_9)
 
 
-hive的常用参数如下：
+hive的常用参数如下
+
+```sql
 -d,–define <key=value> Variable substitution to apply to hive commands. e.g. -d A=B or –define A=B
 -e SQL from command line
 -f SQL from files
 -i Initialization SQL file
 -S,–silent Silent mode in interactive shell
 -v,–verbose Verbose mode (echo executed SQL to the console)
+```
 
 **需要说明的**
 
-```
+```sql
 LOAD DATA LOCAL INPATH './examples/files/kv1.txt' OVERWRITE INTO TABLE pokes;
 local表示从本地导入数据到table
 没有local表示从hdfs导入数据
@@ -148,7 +165,7 @@ local表示从本地导入数据到table
 如果没有给出 'OVERWRITE'，则意味着数据文件将追加到当前的数据集中。
 ```
 
-```
+```sql
 通过Hive导出到本地文件系统
 INSERT OVERWRITE LOCAL DIRECTORY '/tmp/t_hive' SELECT * FROM t_hive;
 没有local则导出到hdfs中(s3)
@@ -156,7 +173,8 @@ INSERT OVERWRITE LOCAL DIRECTORY '/tmp/t_hive' SELECT * FROM t_hive;
 
 ```sql
 
-CREATE EXTERNAL TABLE table1(date_1 string,resorce string,data string) ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t' stored as textfile
+CREATE EXTERNAL TABLE table1(date_1 string,resorce string,data string)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t' stored as textfile
 LOCATION 's3://**';
 创建s3(or hdfs)上的映射表
 ```
