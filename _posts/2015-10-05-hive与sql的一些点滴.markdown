@@ -73,8 +73,10 @@ update table_name set field_name= 1000+filed_name;
 SET SQL_SAFE_UPDATES = 1;
 ```
 [**更新update操作**](http://man.chinaunix.net/database/mysql/zh-4.1.0/06-4.html#UPDATE)
+
 [**insert行**](http://man.chinaunix.net/database/mysql/zh-4.1.0/06-4.html#INSERT_DELAYED)
-[**alter增加列**](http://man.chinaunix.net/database/mysql/zh-4.1.0/06-5.html#ALTER_TABLE)
+
+[**alter增加字段**](http://man.chinaunix.net/database/mysql/zh-4.1.0/06-5.html#ALTER_TABLE)
 
 
 I3.**sql聚合函数汇总**
