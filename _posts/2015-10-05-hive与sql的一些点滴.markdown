@@ -65,6 +65,18 @@ WHERE column_name BETWEEN value1 AND value2
 
  - 判断是否null,  `where field is null`
 
+```sql
+安全模式下无法批量更新
+批量更新时候，安全模式关闭，结束后再开启
+SET SQL_SAFE_UPDATES = 0;
+update table_name set field_name= 1000+filed_name;
+SET SQL_SAFE_UPDATES = 1;
+```
+[**更新update操作**](http://man.chinaunix.net/database/mysql/zh-4.1.0/06-4.html#UPDATE)
+[**insert行**](http://man.chinaunix.net/database/mysql/zh-4.1.0/06-4.html#INSERT_DELAYED)
+[**alter增加列**](http://man.chinaunix.net/database/mysql/zh-4.1.0/06-5.html#ALTER_TABLE)
+
+
 I3.**sql聚合函数汇总**
 
  - count():求满足条件的记录数(COUNT()函数会忽略指定列的值为空的行，但如果 COUNT()函数中用的是星号（*），则不忽略)
