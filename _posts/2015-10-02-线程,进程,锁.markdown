@@ -280,3 +280,124 @@ queue.task_done()主要是发送队列中某个任务结束信号
 所有任务都执行完之后一定要记得用close()和join()回收进程.
 
 
+3 **通用的多线程代码**
+
+```python
+#!/usr/bin/env python
+#coding=utf8
+
+import Queue
+import threading
+import time
+import pdb
+import sys
+import urllib2
+import json
+import os
+import cookielib
+import traceback
+
+reload(sys)
+sys.setdefaultencoding('utf8')
+
+class WorkManager(object):
+    def __init__(self, work_num=1000,thread_num=2):
+        self.work_queue = Queue.Queue()
+        self.threads = []
+        self.__init_work_queue(work_num)
+        self.__init_thread_pool(thread_num)
+
+    """
+        初始化线程
+    """
+    def __init_thread_pool(self,thread_num):
+        for i in range(thread_num):
+            self.threads.append(Work(self.work_queue,i))
+
+    """
+        初始化工作队列
+    """
+    def __init_work_queue(self, jobs_num):
+        for i in range(jobs_num):
+            url = '***'+str(i)
+            self.add_job(do_job, url)
+    """
+        添加一项工作入队
+    """
+    def add_job(self, func, *args):
+        self.work_queue.put((func, list(args)))#任务入队，Queue内部实现了同步机制
+
+    """
+        检查剩余队列任务
+    """
+    def check_queue(self):
+        return self.work_queue.qsize()
+    """
+        等待所有线程运行完毕
+    """
+    def wait_allcomplete(self):
+        for item in self.threads:
+            if item.isAlive():item.join()
+
+class Work(threading.Thread):
+    def __init__(self, work_queue,i):
+        threading.Thread.__init__(self)
+        self.work_queue = work_queue
+        self.num = i
+        self.start()
+
+    def run(self):
+        #死循环，从而让创建的线程在一定条件下关闭退出
+        while True:
+            if self.work_queue.empty():
+                print '队列为空','程序退出'
+                break
+            try:
+                do, args = self.work_queue.get(block=False)#任务异步出队，Queue内部实现了同步机制
+                do(args)
+                self.work_queue.task_done()#通知系统任务完成
+            except Exception,e:
+                traceback.print_exc()
+                print '线程有误',str(e)
+                break
+
+#具体要做的任务
+def do_job(args, retries=3, Connection='Connection'):
+    # pdb.set_trace()
+    headers = {Connection: 'keep-alive', 'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.155 Safari/537.36'}
+    url = args[0]
+    print threading.current_thread(), list(args)
+
+    req  = urllib2.Request(url, headers = headers)
+    try:
+        page = urllib2.urlopen(req, timeout=100).read()
+    except Exception,e:
+        # print str(e)
+        # print '超时重传', '还剩下', retries, '次'
+        if retries:
+            page = do_job(args, retries = retries-1)
+        else:
+            page = '0'
+    time.sleep(0.1)#模拟处理时间
+
+
+if __name__ == '__main__':
+    start = time.time()
+    work_manager =  WorkManager(10, 2)#或者work_manager =  WorkManager(10000, 20)
+    work_manager.wait_allcomplete()
+    print '剩余队列',work_manager.check_queue()
+    # print 
+    end = time.time()
+    print "cost all time: %s" % (end-start)
+
+```
+
+**解释**
+
+```
+类WorkManager是一个管理者，管理线程池和任务队列，类Work是具体的一个线程。给WorkManager分配指定的任务量和线程数，每个线程都从任务队列中获取任务来执行，直到队列中没有任务。 多用在多线程并行抓取任务上。
+这里的do_job()函数是一个抓取网页代码。
+```
+
+
+
