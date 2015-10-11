@@ -138,7 +138,7 @@ sys	0m10.185s
 ```sql
 实例
 将导出的数据导入到hostname(/IP)的test2库中
-myloader   -h hostname -u root -p root  -B test2 -e -t 8  -d /geekwolf/test_table1_table2/ --overwrite-tables -v 3
+myloader   -h hostname -u user_name -p passwd  -B database -e -t threading_nums  -d /path/test_table1_table2/ --overwrite-tables -v 3
 ```
 
 
