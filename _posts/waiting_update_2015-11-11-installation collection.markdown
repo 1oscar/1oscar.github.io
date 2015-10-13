@@ -30,12 +30,27 @@ sudo aws s3 ls s3://  # 列出所有的桶
 
 配置was: 
 
- was configure    # 配置aws
-AWS Access Key ID [None]: # 直接enter
+aws configure    # 配置aws
+AWS Access Key ID [None]: # 直接enter(ununtu是基于aws的)
 AWS Secret Access Key [None]:  ＃直接enter
-Default region name [None]: cn-north-1   #中国一区
+Default region name [None]: s   #中国一区
 Default output format [None]: json     # 响应方式json
 ```
+
+I3.1 **mac install aws**
+
+```shell
+sudo pip install awscli
+配置was: 
+
+aws configure    # 配置aws
+AWS Access Key ID [None]: # 输入.csv 中的key
+AWS Secret Access Key [None]:  ＃输入.csv 中的 secret key
+Default region name [None]: s   #中国一区
+Default output format [None]: json     # 响应方式json
+```
+
+
 
 I4. **install mydumper**
 
