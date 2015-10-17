@@ -47,7 +47,7 @@ sudo apt-get install mydumper
 
 I5. **GNU 工具脚本**
 
-```shell
+```sql
 #!/usr/local/bin/bash
 
 # add source
