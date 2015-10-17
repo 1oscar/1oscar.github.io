@@ -81,7 +81,7 @@ SET SQL_SAFE_UPDATES = 1;
 
 I3.**sql聚合函数汇总**
 
- - count():求满足条件的记录数(COUNT()函数会忽略指定列的值为空的行，但如果 COUNT()函数中用的是星号（*），则不忽略)
+ - count():求满足条件的记录数(COUNT()函数会忽略指定列的值为空的行，但如果 COUNT()函数中用的是星号（*），则不忽略)(count(1))
 
  - max():求最大值
 
@@ -200,12 +200,35 @@ LOCATION 's3://**';
 ```
 
 ```sql
-
 insert overwrite directory "s3://**"
 select *
 from table1;
 查询table1内容查询结果导入到s3(or hdfs)里
 ```
+
+```sql
+关于分区:
+分区表使得查询时指定分区而不必查询整个表，节约时间
+分区表的字段在整个表里其实就是一个普通的字段,每个分区以文件夹的形式单独存在表文件夹的目录下
+
+建（映射表)分区:
+create external table table_name(filed type) PARTITIONED BY (partition_field type)
+ROW FORMAT DELIMITED FIELDS TERMINATED BY '\t' stored as textfile
+location '**'
+添加数据到分区:
+alter table table_name add IF NOT EXISTS partition(partition_field='**') location '**';
+删除分区:
+ALTER TABLE table_name DROP partition_spec, partition_spec,...
+
+将本地数据添加到分区中:
+load data local inpath '/home/hadoop/Desktop/data.txt' overwrite into table rable_name partition (ds='2015-11-11'); 
+往一个分区表的某个分区中添加数据:
+insert overwrite table table_name partition (ds='**') select id,max(name) from test group by id; 
+分区中查询:
+select * from table_name where partition_field ='**'; 
+```
+
+
 
 
 
