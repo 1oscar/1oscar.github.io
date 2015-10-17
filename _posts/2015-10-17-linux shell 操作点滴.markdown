@@ -6,7 +6,7 @@ share: true
 tags: shell 
 ---
 
-**只点滴我不是很熟练但还算重要的or 其他reasons**
+**只点滴我不是很熟练但还算重要的or 其他reasons**<br>
 **I1:常用命令帮助:**<br>
 查看程序的binary文件所在路径: $which command<br>
 查询命令command的说明文档: $man command<br>
