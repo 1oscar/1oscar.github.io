@@ -8,17 +8,17 @@ tags: tools
 
 I1. **pycharm,vim,sublime这三种工具都曾经在某一段时间段里分别被我长期使用过，现在工作更喜欢三者结合着用，大型的项目或者总是需要查看函数定义的地方使用pycharm,跑服务器上修改代码使用vim，其他小程序，或者文本文件更钟情于sublime，这里做一个总结。**
 
-I2. **vim**
+I2. **vim**<br>
 [**我的vim配置**](https://github.com/1oscar/exercises/tree/master/dkf_vim)
 平时使用vim没有那么配置什么插件之类，主要还是偶尔用，不频繁<br>
 这里有大牛介绍<br>
-[**插件**](http://zuyunfei.com/categories/Vim/)
-[**大牛常用的插件**](http://www.zlovezl.cn/articles/my-vim-plugins-for-python/)
+[**插件**](http://zuyunfei.com/categories/Vim/)<br>
+[**大牛常用的插件**](http://www.zlovezl.cn/articles/my-vim-plugins-for-python/)<br>
 [**gtihub管理插件**](http://skoo.me/vim/2013/09/18/vim-plugin-manager/)<br>
-[**像IDE一样使用vim**](https://github.com/yangyangwithgnu/use_vim_as_ide)
-[**vim IDE说明**](http://blog.csdn.net/wklken/article/details/9076621)
-[**tmux与vim**](http://blog.jobbole.com/87585/)
-[**tmux与vim**](http://blog.jobbole.com/87584/)
+[**像IDE一样使用vim**](https://github.com/yangyangwithgnu/use_vim_as_ide)<br>
+[**vim IDE说明**](http://blog.csdn.net/wklken/article/details/9076621)<br>
+[**tmux与vim**](http://blog.jobbole.com/87585/)<br>
+[**tmux与vim**](http://blog.jobbole.com/87584/)<br>
 
 **平时使用的基于目前的vim的快捷键**
 mac下
@@ -38,7 +38,7 @@ CTRL-B和CTRL-F:翻页
 ```
 
 I3. **sublime** <br>
-[**install**](http://www.sublimetext.com/2)
+[**install**](http://www.sublimetext.com/2)<br>
 注册码:
 
 ```
