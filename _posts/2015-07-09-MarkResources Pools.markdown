@@ -106,6 +106,7 @@ password =
 6. [global pools](http://cn-proxy.com/archives/218)
 7. [proxy spider](http://pachong.org/)
 8. **code见evernote**
+9. [高匿proxy](http://www.xicidaili.com/)
 
 ### cookie handle
 
