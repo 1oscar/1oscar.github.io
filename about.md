@@ -69,6 +69,7 @@ image:
 
 - ##### 虎嗅 :  **段家公子 已弃用**
 
+- ##### 其他 :  [**resys group成员**](http://groups.google.com/group/resys)
 
 
 
