@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "vim sumlime pycharm"
+title: "vim sublime pycharm"
 comments: true
 share: true
 tags: tools
