@@ -6,23 +6,44 @@ share: true
 tags: scala
 ---
 
-1. 运行环境：jvm， 集合面向对象和函数式编程，静态类型编程语言。<br>
-2.访问任何java类库并且和java框架互操作。<br>
-3.scala作为脚本运行：<br>
-#!/usr/bin/env scala<br>
-3.scalac **.scala是将scala代码编译为jvm可以运行的字节码。<br>
-4.scala中_即java中的*<br>
-5.scala中索引从0开始，但元组是从1开始。<br>
-6.val即java中final变量，var即java中非final变量。<br>
-7.scala中if/else表达式有值，此值就是跟在if/else后面的表达式的值。<br>
-if/else表达式类型以值类型为准，如果是混合类型，则使用超类Any，if<br>
-语句无else，当if不满足时，表达式结果为unit类型。相当于if(x>1) 1 else ()<br>
-8.scala无for(;;)循环，使用for (x <- 表达式）。for(..)yield最终产生一个新的集合。<br>
+
+1. 运行环境：jvm， 集合面向对象和函数式编程，静态类型编程语言。
+
+2.访问任何java类库并且和java框架互操作。
+
+3.scala作为脚本运行：
+
+```
+#!/usr/bin/env scala
+```
+
+3.scalac **.scala是将scala代码编译为jvm可以运行的字节码。
+
+4.scala中_即java中的*
+
+5.scala中索引从0开始，但元组是从1开始。
+
+6.val即java中final变量，var即java中非final变量。
+
+7.scala中if/else表达式有值，此值就是跟在if/else后面的表达式的值。
+
+if/else表达式类型以值类型为准，如果是混合类型，则使用超类Any，if
+
+语句无else，当if不满足时，表达式结果为unit类型。相当于if(x>1) 1 else ()
+
+8.scala无for(;;)循环，使用for (x <- 表达式）。for(..)yield最终产生一个新的集合。
+
 9.scala无break和continue，替换：使用Boolean类型控制变量或者使用嵌套函数，从函数中return。
-scala无switch，替换：match。<br>
-10.定义函数，可以省略返回值类型声明（即无需声明val）。但是递归函数不可省略。声明函数返回类型，可以使你的接口清晰，<br>
+scala无switch，替换：match。
+
+10.
+
+```
+定义函数，可以省略返回值类型声明（即无需声明val）。但是递归函数不可省略。声明函数返回类型，可以使你的接口清晰，
 建议不要省略返回类型。scala函数参数都是val类型，且不需要声明，也不要重新赋值。类可以加val参数声明。
-11.闭包：函数中使用了函数外的局部变量，形成了一个闭包。<br>
+```
+
+11.闭包：函数中使用了函数外的局部变量，形成了一个闭包。
 
 ```
 var sum=0
@@ -89,7 +110,8 @@ scala.Console对象用于终端的输入和输出。终端输入有：readLine,r
 Actor与并发：
 1）设计并发软件，Actor是首选的工具。
 2）实现actor方法是继承scala.actors.Actor,重写act方法，start()方法启动。
-actor运行时相互独立，或者通过scala.actors.Actor对象的actor方法创建actor，此时不需要start方法。
+actor运行时相互独立，或者通过scala.actors.Actor对象的actor方法创建actor，
+此时不需要start方法。
 3） 发送接收消息
 object ScalaTest extends Actor{
      def act(){
