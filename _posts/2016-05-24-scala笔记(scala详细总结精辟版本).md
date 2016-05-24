@@ -7,7 +7,7 @@ tags: scala
 ---
 
 
-1. 运行环境：jvm， 集合面向对象和函数式编程，静态类型编程语言。
+1.运行环境：jvm， 集合面向对象和函数式编程，静态类型编程语言。
 
 2.访问任何java类库并且和java框架互操作。
 
@@ -26,9 +26,7 @@ tags: scala
 6.val即java中final变量，var即java中非final变量。
 
 7.scala中if/else表达式有值，此值就是跟在if/else后面的表达式的值。
-
 if/else表达式类型以值类型为准，如果是混合类型，则使用超类Any，if
-
 语句无else，当if不满足时，表达式结果为unit类型。相当于if(x>1) 1 else ()
 
 8.scala无for(;;)循环，使用for (x <- 表达式）。for(..)yield最终产生一个新的集合。
@@ -38,10 +36,8 @@ scala无switch，替换：match。
 
 10.
 
-```
 定义函数，可以省略返回值类型声明（即无需声明val）。但是递归函数不可省略。声明函数返回类型，可以使你的接口清晰，
 建议不要省略返回类型。scala函数参数都是val类型，且不需要声明，也不要重新赋值。类可以加val参数声明。
-```
 
 11.闭包：函数中使用了函数外的局部变量，形成了一个闭包。
 
@@ -59,6 +55,7 @@ protected：同一包中的其他类无法访问被保护的成员。<br>
 未覆盖和实现基类中的成员，禁用override修饰符。<br>
 16.显示类型测试：a.isInstanceOf[String]<br>
 显示类型转换：a.asInstanceOf[String]
+
 17.各集合关系
 ![集合关系](http://1oscar.github.io/photos/blogPhotos/scala%E7%AC%94%E8%AE%B0/scala%E7%AC%94%E8%AE%B01.png)
 
@@ -81,7 +78,6 @@ for(i <- 0 until mutl.length)
 不可变列表：List，可变列表：ListBuffer
 List无append，ListBuffer有append，完成后toList即可。
 val list1 = List("a") //List是伴生对象，相当于List.apply()
-<br>
 
 20.栈和队列，可变与不可变都是Stack和Queue。<br>
 21.元组可以使用点，下划线，从1开始索引访问其中元素。<br>
