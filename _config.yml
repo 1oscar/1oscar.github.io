@@ -54,7 +54,8 @@ links:
 # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 timezone:    Asia/Beijing
 future:      true
-highlighter:  pygments
+#highlighter:  pygments
+highlighter:  rouge
 markdown:    redcarpet
 #markdown:    kramdown
 
