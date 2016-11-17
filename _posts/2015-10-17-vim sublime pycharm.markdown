@@ -197,6 +197,29 @@ F2跳转到定位标记处 | Next bookmark
 ⌘⌥→下一个打开的文件| Next file
 ```
 
+**windows平台快捷键设置**
+
+```
+
+{
+	"color_scheme": "Packages/Color Scheme - Default/Monokai.tmTheme",
+	"draw_white_space": "all",
+	"fold_buttons": true,
+	"font_size": 13,
+	"highlight_line": true,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"line_numbers": true,
+	"scroll_past_end": true,
+	"translate_tabs_to_spaces": true,
+	"word_wrap": true,
+	"wrap_width": 80
+}
+
+```
+
 I4. **pycharm**<br>
 [**install**](https://www.jetbrains.com/pycharm/download/) <br>
 注册码: <br>
