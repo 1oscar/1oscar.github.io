@@ -198,6 +198,7 @@ F2跳转到定位标记处 | Next bookmark
 ```
 
 **windows平台快捷键设置**
+**F5设为运行python文件，F6为显示Python控制台，F7为显示Shell控制台，直接加入“Preference-key-binding-user**
 
 ```
 
