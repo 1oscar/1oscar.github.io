@@ -202,22 +202,29 @@ F2跳转到定位标记处 | Next bookmark
 
 ```
 
-{
-	"color_scheme": "Packages/Color Scheme - Default/Monokai.tmTheme",
-	"draw_white_space": "all",
-	"fold_buttons": true,
-	"font_size": 13,
-	"highlight_line": true,
-	"ignored_packages":
-	[
-		"Vintage"
-	],
-	"line_numbers": true,
-	"scroll_past_end": true,
-	"translate_tabs_to_spaces": true,
-	"word_wrap": true,
-	"wrap_width": 80
+[ {"keys":["f5"],
+    "caption": "SublimeREPL: Python - RUN current file",
+    "command": "run_existing_window_command", "args":
+    {
+    "id": "repl_python_run",
+    "file": "config/Python/Main.sublime-menu"
+    }
+},{"keys":["f6"],
+    "caption": "SublimeREPL: Python",
+    "command": "run_existing_window_command", "args":
+    {
+    "id": "repl_python",
+    "file": "config/Python/Main.sublime-menu"
+    }
+},{"keys":["f7"],
+    "caption": "SublimeREPL: Shell",
+    "command": "run_existing_window_command", "args":
+    {
+    "id": "repl_shell",
+    "file": "config/Shell/Main.sublime-menu"
+    }
 }
+]
 
 ```
 
