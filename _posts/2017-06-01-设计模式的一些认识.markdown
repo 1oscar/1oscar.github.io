@@ -1,0 +1,195 @@
+---
+layout: post
+title: "设计模式的一些认识" 
+comments: true
+share: true
+tags: 设计模式
+---
+
+一直没有深刻涉及到设计模式的东西，也谈不上深入理解。刚参加工作时候，代码多数是为了完成功能，慢慢的写的多了，想到了封装，多态，继承等，但是不曾思考过我使用的是什么设计模式。在兼职组看到前辈们写的listin的代码时候，起初是看不懂，后来慢慢的开始看书，才发现，里面用了设计模式等，也变有了进一步学习的机遇。恰巧5月份做了一次设计模式的分享，这里算是一次复习吧。  只简单介绍我常见到和我使用的等，不曾见过或者使用的设计模式这里不讲述了。
+
+设计模式应该怎么理解呢？
+解决方案 ?
+特定任务的规则 ？
+重复问题的结构设计方案 ？
+类、实例、组件层次上的抽象关系 ？
+
+都不是！
+
+设计模式应该是理解成一种规则，一种思维，一种在你写代码的时候，为了扩展性，可靠性，你首先要想到的东西，就是考虑到架构扩展，流量访问量大，防止oom的等问题，先想到使用什么设计模式来很好的规避这种问题的思维。当然，使用了设计模式，能够把代码冗余减少，容易被人理解。
+
+但是，
+
+使用了设计模式，如果没有对设计模式有很深刻的印象与使用经验，纯粹的使用设计模式只会使得代码糟糕。
+
+在单纯的满足流量，业务等条件的情况下，即使不是使用了一些设计模式，单纯的完成业务逻辑开发，也是能够抗住支撑很多年的。记得在简历的时候，虽然没有很多使用设计模式，靠机器的叠加，依然扛住了流量高峰时期的每天2亿次的pv的访问。而在兼职这边，使用了大量的设计模式，流量高峰时期的每天1亿次的pv，带来的好处似乎也并没有那么明显，但是在代码简洁性上，在代码扩展上，和耗时上，出现bug上，却带来了很多的好处。这点可以算是设计模式的特别大的优势吧。
+
+所以说，恰当的使用设计模式确实是能够带来一些简洁性，扩展性，不容易出现bug，耗时上，是能够带来些明显的优势的，但是即使不适用，也不一定会使业务会怎样，但是可以肯定的是，不是对设计模式有很深的理解的话，盲目的时候，只会是代码更加糟糕。
+
+另外，
+
+良好的模块设计以及合理使用设计模式有助于解决存在无效的引用问题，从而避免OOM的发生。
+
+仔细看那些设计模式，其实可以理解为是对对封装，继承，多态这三种面向对象的三大特性的变种的运用。
+
+总体来说设计模式分为三大类：
+（1）创建型模式，共五种：工厂方法模式、抽象工厂模式、单例模式、建造者模式、原型模式。
+（2）结构型模式，共七种：适配器模式、装饰器模式、代理模式、外观模式、桥接模式、组合模式、享元模式。
+（3）行为型模式，共十一种：策略模式、模板方法模式、观察者模式、迭代子模式、责任链模式、命令模式、备忘录模式、状态模式、访问者模式、中介者模式、解释器模式。
+
+关于工厂模式，适配器模式，门面模式，策略模式都可以理解为接口，抽象类，public类的多重组合运用。单纯的去看这些设计模式，之间的区别很小，怎么样都能够实现逻辑上的代码，只是细微的区别使用哪个更合适，更优。
+接口定义简单的方法，不必实现。抽象类继承接口，方法可以实现，可以不实现，也可以自定义一些方法。public继承接口或者抽象类，必须把未实现的方法都实现了。
+
+
+责任链模式，有多个对象，每个对象持有对下一个对象的引用，这样就会形成一条链，请求在这条链上传递，直到某一对象决定处理该请求。
+我遇到的是责任链的变种模式是如下的请求在一条链上传递
+
+![1](http://1oscar.github.io/photos/blogPhotos/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%9A%84%E4%B8%80%E4%BA%9B%E8%AE%A4%E8%AF%86/1.jpg)
+
+单例模式：
+
+//饿汉式单例类.在类初始化时，已经自行实例化   线程安全
+
+    public class Singleton1 {  
+        private Singleton1() {}  
+        private static final Singleton1 single = new Singleton1();  
+        //静态工厂方法   
+        public static Singleton1 getInstance() {  
+            return single;  
+        }  
+    }  
+
+饿汉就是类一旦加载，就把单例初始化完成，保证getInstance的时候，单例是已经存在的了，懒汉比较懒，只有当调用getInstance的时候，才回去初始化这个单例。
+
+//懒汉式单例类.在第一次调用的时候实例化自己   
+
+    public class Singleton {  
+        private Singleton() {}  
+        private static Singleton single=null;  
+        //静态工厂方法   
+        public static Singleton getInstance() {  
+             if (single == null) {    
+                 single = new Singleton();  
+             }    
+            return single;  
+        }  
+    } 
+
+线程不安全
+
+双重检查锁定
+
+    public static Singleton getInstance() {  
+            if (singleton == null) {    
+                synchronized (Singleton.class) {    
+                   if (singleton == null) {    
+                      singleton = new Singleton();   
+                   }    
+                }    
+            }    
+            return singleton;   
+        }  
+
+静态内部类
+
+    public class Singleton {    
+        private static class LazyHolder {    
+           private static final Singleton INSTANCE = new Singleton();    
+        }    
+        private Singleton (){}    
+        public static final Singleton getInstance() {    
+           return LazyHolder.INSTANCE;    
+        }    
+    }    
+
+利用了classloader的机制来保证初始化instance时只有一个线程，所以也是线程安全的，同时没有性能损耗，这种最好。
+
+
+适配器模式主要分为三类：类的适配器模式、对象的适配器模式、接口的适配器模式。
+
+适配器模式：都可以理解为是为了解决接口兼容性的问题。
+
+适配器模式将某个类的接口转换成客户端期望的另一个接口表示，目的是消除由于接口不匹配所造成的类的兼容性问题
+
+类的适配器模式核心思想就是：有一个Source类，拥有一个方法，待适配，目标接口是Targetable，通过Adapter类，将Source的功能扩展到Targetable里。
+
+    public class Adapter extends Source implements Targetable {
+    }
+
+    Targetable target = new Adapter(); //使用接口target类来接。
+
+对象的适配器模式的基本思路和类的适配器模式相同，只是将Adapter类作修改成Wrapper，这次不继承Source类，而是持有Source类的实例，以达到解决兼容性的问题。
+
+    public class Wrapper implements Targetable {
+
+        private Source source;
+
+        public Wrapper(Source source) {
+            super();
+            this.source = source;
+        }
+
+    }
+    Targetable target = new Wrapper(source);
+
+接口的适配器是这样的：有时我们写的一个接口中有多个抽象方法，当我们写该接口的实现类时，必须实现该接口的所有方法，这明显有时比较浪费，因为并不是所有的方法都是我们需要的，有时只需要某一些，此处为了解决这个问题，我们引入了接口的适配器模式，借助于一个抽象类，该抽象类实现了该接口，实现了所有的方法，而我们不和原始的接口打交道，只和该抽象类取得联系，所以我们写一个类，继承该抽象类，重写我们需要的方法就行了。
+
+装饰器模式：
+装饰模式：在不必改变原类文件和使用继承的情况下，动态地扩展一个对象的功能。它是通过创建一个包装对象，也就是装饰来包裹真实的对象。
+
+
+    package com.model.structure;
+
+    public interface Sourceable {
+        public void method();
+    }
+
+    package com.model.structure;
+    public class Source implements Sourceable {
+
+        @Override
+        public void method() {
+            System.out.println("the original method!");
+        }
+    }
+
+    package com.model.structure;
+    public class Decorator implements Sourceable {
+
+        private Sourceable source;
+
+        public Decorator(Sourceable source) {
+            super();
+            this.source = source;
+        }
+
+        @Override
+        public void method() {
+            System.out.println("before decorator!");
+            source.method();
+            System.out.println("after decorator!");
+        }
+    }
+
+    package com.model.structure;
+
+    public class DecoratorTest {
+
+        public static void main(String[] args) {
+            //（1） 装饰对象和真实对象有相同的接口。这样客户端对象就能以和真实对象相同的方式和装饰对象交互。
+            //（2） 装饰对象包含一个真实对象的引用（reference）
+            //（3） 装饰对象接受所有来自客户端的请求。它把这些请求转发给真实的对象。
+            //（4） 装饰对象可以在转发这些请求以前或以后增加一些附加功能。这样就确保了在运行时，不用修改给定对象的结构就可以在外部增加附加的功能。
+            //    在面向对象的设计中，通常是通过继承来实现对给定类的功能扩展。
+            //    继承不能做到这一点，继承的功能是静态的，不能动态增删。
+            Sourceable source = new Source();
+            Sourceable obj = new Decorator(source);
+            obj.method();
+        }
+    }
+
+
+以上是我实际见过或工作中经常使用的设计模式，其他的设计模式不是不重要，而是，不在真实的工作中，使用，很难记住那么深刻。就不做赘述了。
+
+在真正的工作中，要时刻牢记，设计模式是一种思维，一种规则，是在写代码的时候，首先要想到的东西，这边是思维的力量。但是并非一定要使用不可。
+
