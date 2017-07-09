@@ -35,11 +35,11 @@ hive的内存调优：
 
 ![9](http://1oscar.github.io/photos/blogPhotos/hadoop%2Chive%2Chbase%E7%9F%A5%E8%AF%86%E4%B8%B2%E8%AE%B2%E5%A4%8D%E4%B9%A0%E7%AF%87/9.jpg)
 
-![10](http://1oscar.github.io/photos/blogPhotos/hadoop%2Chive%2Chbase%E7%9F%A5%E8%AF%86%E4%B8%B2%E8%AE%B2%E5%A4%8D%E4%B9%A0%E7%AF%87/10.jpg)
+![10](http://1oscar.github.io/photos/blogPhotos/hadoop%2Chive%2Chbase%E7%9F%A5%E8%AF%86%E4%B8%B2%E8%AE%B2%E5%A4%8D%E4%B9%A0%E7%AF%87/10.png)
 
 ![11](http://1oscar.github.io/photos/blogPhotos/hadoop%2Chive%2Chbase%E7%9F%A5%E8%AF%86%E4%B8%B2%E8%AE%B2%E5%A4%8D%E4%B9%A0%E7%AF%87/11.jpg)
 
-![12](http://1oscar.github.io/photos/blogPhotos/hadoop%2Chive%2Chbase%E7%9F%A5%E8%AF%86%E4%B8%B2%E8%AE%B2%E5%A4%8D%E4%B9%A0%E7%AF%87/12.jpg)
+![12](http://1oscar.github.io/photos/blogPhotos/hadoop%2Chive%2Chbase%E7%9F%A5%E8%AF%86%E4%B8%B2%E8%AE%B2%E5%A4%8D%E4%B9%A0%E7%AF%87/12.png)
 
 ![13](http://1oscar.github.io/photos/blogPhotos/hadoop%2Chive%2Chbase%E7%9F%A5%E8%AF%86%E4%B8%B2%E8%AE%B2%E5%A4%8D%E4%B9%A0%E7%AF%87/13.jpg)
 
@@ -49,7 +49,7 @@ Hadoop的序列化格式：Writable
 
 ![15](http://1oscar.github.io/photos/blogPhotos/hadoop%2Chive%2Chbase%E7%9F%A5%E8%AF%86%E4%B8%B2%E8%AE%B2%E5%A4%8D%E4%B9%A0%E7%AF%87/15.jpg)
 
-![16](http://1oscar.github.io/photos/blogPhotos/hadoop%2Chive%2Chbase%E7%9F%A5%E8%AF%86%E4%B8%B2%E8%AE%B2%E5%A4%8D%E4%B9%A0%E7%AF%87/16.jpg)
+![16](http://1oscar.github.io/photos/blogPhotos/hadoop%2Chive%2Chbase%E7%9F%A5%E8%AF%86%E4%B8%B2%E8%AE%B2%E5%A4%8D%E4%B9%A0%E7%AF%87/16.png)
 
 partitioner，适用于二次排序场景,分组，排序。
 
