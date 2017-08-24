@@ -25,6 +25,8 @@ SQL的执行顺序：
 
  - 第六步：执行ORDER BY 排序
 
+```sql
+
      (1)from 
     (3) join 
     (2) on 
@@ -35,6 +37,8 @@ SQL的执行顺序：
     (8) select 
     (9) distinct 
     (10) order by
+    
+```
 
 
 I2. **sql常用操作:**
