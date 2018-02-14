@@ -72,15 +72,6 @@ image:
 - ##### 其他 :  [**resys group成员**](http://groups.google.com/group/resys)
 
 
-<!--畅言 PC版-->
-<script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js" ></script>
-<script type="text/javascript">
-window.changyan.api.config({
-appid: 'cyt6UF62U',
-conf: 'prod_6cc81cf5df6230e5cc2351fe26474763'
-});
-</script>
-
 
 <script>
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
