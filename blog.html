@@ -10,8 +10,18 @@ description: "An archive of posts sorted by date."
 {% endfor %}
 </ul>
 
+<!--畅言 PC版-->
+<div id="SOHUCS" sid={{page.id}}></div>
+<script charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/changyan.js" ></script>
+<script type="text/javascript">
+window.changyan.api.config({
+appid: 'cyt6UF62U',
+conf: 'prod_6cc81cf5df6230e5cc2351fe26474763'
+});
+</script>
 
 <script src="/js/tctip.min.js"></script>
+
 
 <!-- google 统计 -->
 <script>
