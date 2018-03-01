@@ -7,7 +7,7 @@ tags: tensorflow,机器学习
 ---
 
 
-
+```
 
 记录tensorflow激活前后，都无法导入tensorflow的问题解决方式。
 
@@ -50,9 +50,17 @@ vim /etc/ld.so.conf.d/nvidia.conf
 
 查找~/.profile，加载~/.bashrc，查找~/.bashrc发现，最后，
 
+```
+
+```
+
 export PATH="/root/anaconda2/bin:$PATH"
 export LD_LIBRARY_PATH="/usr/local/nvidia/lib:/usr/local/nvidia/lib64"
 export PATH="/workspace:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+```
+
+```
 
 打印环境变量：
 echo $PATH 
@@ -72,8 +80,15 @@ echo $LD_LIBRARY_PATH，
 少了.bash_profile的环境。
 发现.bashrc的设置bug，并去除PATH中的重复的：
 修改如下：
+
+```
+
+```
 export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/nvidia/lib:/usr/local/nvidia/lib64"
 export PATH="/workspace:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:$PATH"
+```
+
+```
 
 每次ssh进入后，都需要source ~/.bashrc，进入python环境，import tensorflow，正确。
 在.bash_profile里强制加入一行：
@@ -87,7 +102,13 @@ source ~/.profile
 echo $PATH 
 echo $LD_LIBRARY_PATH，
 发现，
+
+```
+
+```
 /root/anaconda2/envs/tensorflow/bin:/workspace:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/anaconda2/bin:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/bin:/root/.linuxbrew/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:
+
+```
 
 相比较激活之前，多了个/root/anaconda2/envs/tensorflow/bin路径，却无法导入tensorflow，不解。
 这部分路径从哪里过来的。
@@ -109,6 +130,11 @@ export PATH="$PATH:$_NEW_PART"
 激活tensorflow后，python交互环境，import tensorflow可以正常导入。
 
 打印路径：
+
+```
+
+```
+
 /workspace:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/anaconda2/bin:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/bin:/root/.linuxbrew/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games::/root/anaconda2/envs/tensorflow/bin
 
  不解的是：
@@ -116,71 +142,8 @@ export PATH="$PATH:$_NEW_PART"
  
  
 
-
-
 具体的安装tensorflow，可以参考：
 
 https://github.com/Jinglue/TensorFlow-Guide/blob/master/preparation/installation_ubuntu.md
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-备注：如何查看ununtu是否有GPU?
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+```
