@@ -110,6 +110,8 @@ echo $LD_LIBRARY_PATH，
 
 ```
 
+```
+
 相比较激活之前，多了个/root/anaconda2/envs/tensorflow/bin路径，却无法导入tensorflow，不解。
 这部分路径从哪里过来的。
 
@@ -136,6 +138,10 @@ export PATH="$PATH:$_NEW_PART"
 ```
 
 /workspace:/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/anaconda2/bin:/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/bin:/root/.linuxbrew/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games::/root/anaconda2/envs/tensorflow/bin
+
+```
+
+```
 
  不解的是：
  为什么:/root/anaconda2/envs/tensorflow/bin放到前面不行，后面却可以。
