@@ -1,11 +1,12 @@
 ---
 layout: post
-title: "无法启动tensorflow的解决思路"
+title: "无法启动tensorflow的解决思路以及安装tensorflow记录"
 comments: true
 share: true
 tags: tensorflow,机器学习
 ---
 
+# 无法启动tensorflow的解决思路
 
 ```
 
@@ -153,3 +154,90 @@ export PATH="$PATH:$_NEW_PART"
 https://github.com/Jinglue/TensorFlow-Guide/blob/master/preparation/installation_ubuntu.md
 
 ```
+
+
+
+# 安装tensorflow记录
+
+```
+
+查看机器是否装了GPU：显卡是nvidia的。
+cat /proc/driver/nvidia/gpus/0000\:05\:00.0/information
+发现装了gpu。有8块。
+0000:05:00.0  0000:06:00.0  0000:09:00.0  0000:0a:00.0  
+0000:84:00.0  0000:85:00.0  0000:88:00.0  0000:89:00.0
+有gpu才能装gpu版本的tensorflow。
+
+装了gpu的才可以安装tensorflow-gpu版本。否则安装：cpu版本。
+安装指导：
+
+```
+
+```
+
+https://github.com/Jinglue/TensorFlow-Guide/blob/master/preparation/installation_ubuntu.md
+
+```
+
+```
+
+我安装的是gpu版本。
+pip install tensorflow-gpu，默认是最新的版本。需要对应的cuda和cudnn版本支持，对照表如下：
+
+```
+
+https://www.tensorflow.org/install/install_sources
+
+```
+安装了anaconda2，使用conda方式安装tensorflow.
+
+tensorflow装的太新或者太久了，想更新，
+pip install --ignore-installed --upgrade  tfBinaryURL （如，https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-1.4.1-cp34-cp34m-linux_x86_64.whl）
+具体对应关系见如下链接最后：
+```
+
+https://github.com/Jinglue/TensorFlow-Guide/blob/master/preparation/installation_ubuntu.md
+
+
+https://storage.googleapis.com 此链接如果访问不到数据，可以使用清华大学的镜像，，链接：
+
+https://mirrors.tuna.tsinghua.edu.cn/help/tensorflow/
+
+```
+我使用conda安装后，报错：
+
+libcudnn.so.6:cannot open sharedobjectfile: No such file or directory
+
+查缺少找不到libcudnn.so.6。
+
+查：
+cuda安装路径：/usr/local/cuda-8.0
+cuda，nvidia的一些全局配置：/etc/ld.so.conf.d/
+
+查、/usr/local/cuda/lib64/缺少没有6.0的
+
+https://developer.nvidia.com/rdp/cudnn-download 
+下载cudnn，找到对应的版本。
+
+发现是一个tgz的压缩包，使用tar进行解压：
+
+tar -xvf cudnn-8.0-linux-x64-v6.0.tgz
+1
+解压后再把相应的文件拷贝到对应的CUDA目录下即可
+
+sudo cp cuda/include/cudnn.h /usr/local/cuda/include/
+sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64/
+sudo chmod a+r /usr/local/cuda/include/cudnn.h
+sudo chmod a+r /usr/local/cuda/lib64/libcudnn*
+
+安装完成，可以使用tensorflow。
+
+```
+
+tensorflow的各个版本对应的api：
+
+
+https://www.tensorflow.org/versions/
+
+
+
