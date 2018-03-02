@@ -189,11 +189,13 @@ pip install tensorflow-gpu，默认是最新的版本。需要对应的cuda和cu
 https://www.tensorflow.org/install/install_sources
 
 ```
+
 安装了anaconda2，使用conda方式安装tensorflow.
 
 tensorflow装的太新或者太久了，想更新，
 pip install --ignore-installed --upgrade  tfBinaryURL （如，https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-1.4.1-cp34-cp34m-linux_x86_64.whl）
 具体对应关系见如下链接最后：
+
 ```
 
 https://github.com/Jinglue/TensorFlow-Guide/blob/master/preparation/installation_ubuntu.md
@@ -204,6 +206,7 @@ https://storage.googleapis.com 此链接如果访问不到数据，可以使用�
 https://mirrors.tuna.tsinghua.edu.cn/help/tensorflow/
 
 ```
+
 我使用conda安装后，报错：
 
 libcudnn.so.6:cannot open sharedobjectfile: No such file or directory
