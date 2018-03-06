@@ -9,8 +9,10 @@ tags: tensorflow,机器学习
 执行环境：
 
 ubuntu： 16.04
-tensorflow： 1.4.1
+tensorflow-gpu： 1.4.1
 cudn: 8.0,cudnn: 6.0
+gpu: 8块，nvidia的
+cpu: 2*20核
 python: 2.7.12
 
 从总体上看，实例可以分成两个部分： 构建深度学习模型和执行模型部分。
