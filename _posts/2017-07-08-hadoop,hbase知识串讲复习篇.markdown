@@ -3,7 +3,7 @@ layout: post
 title: "hadoop,hive,hbase知识串讲复习篇" 
 comments: true
 share: true
-tags: hadoop,hbase 
+tags: hadoop hbase 
 ---
 
 
