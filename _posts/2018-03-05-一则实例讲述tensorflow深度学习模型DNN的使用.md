@@ -3,7 +3,7 @@ layout: post
 title: "一则实例讲述tensorflow深度学习模型DNN的使用"
 comments: true
 share: true
-tags: tensorflow,机器学习
+tags: tensorflow 机器学习
 ---
 
 执行环境：
