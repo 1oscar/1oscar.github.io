@@ -3,7 +3,7 @@ layout: post
 title: "无法启动tensorflow的解决思路以及安装tensorflow记录"
 comments: true
 share: true
-tags: tensorflow,机器学习
+tags: tensorflow 机器学习
 ---
 
 # 无法启动tensorflow的解决思路
