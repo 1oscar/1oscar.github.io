@@ -11,7 +11,7 @@ Hive可以将结构化的数据文件映射为一张数据库表，并提供完�
 
 I1. **顺序**
 
-SQL的执行顺序：
+SQL的执行顺序： 
 
  - 第一步：执行FROM
 
@@ -38,6 +38,27 @@ SQL的执行顺序：
     (9) distinct 
     (10) order by
     
+```
+
+上面执行顺序在where里的条件有索引条件下是先执行where，
+如果where里的筛选条件没有索引，则会把所有的select出来，取满足where条件的，性能瓶颈较大。
+索引添加经验：范围内的放到后面，固定的字段放到索引前面。
+
+```
+建表索引：
+create table table(
+  id int unsigned not null auto_increment comment '自增主键',
+  article_id int(11) not null comment '文章id',  
+  create_time datetime not null default current_timestamp comment '创建时间',
+  primary key (id),
+  index idx_update_time(article_id,update_time),       #普通索引名以idx开头，联合索引
+  unique index uniq_article_id(article_id)  #唯一索引名以uniq开头
+)engine=innodb auto_increment=1 charset=utf8mb4 comment='例子表';
+
+建表后针对某个字段增加索引：
+alter table table add index idx_start_time(start_time);
+
+
 ```
 
 
